@@ -1,0 +1,77 @@
+{
+  "navbar": {
+    "logo": {
+      "text": "Alghif's Portfolio",
+      "highlight": "."
+    },
+    "menuItems": [
+      {
+        "name": "Home",
+        "href": "/"
+      },
+      {
+        "name": "About Me",
+        "href": "/about"
+      },
+      {
+        "name": "Projects",
+        "href": "/projects"
+      },
+      {
+        "name": "Skills",
+        "href": "/skills"
+      },
+      {
+        "name": "Contact",
+        "href": "/contact"
+      }
+    ]
+  },
+  "hero": {
+    "title": {
+      "welcome": "Hello, I am",
+      "name": "Alghifari Rasyid Zola",
+      "highlight": "Computer Science"
+    },
+    "description": "I am an undergraduate student at Pertamina University majoring in Computer Science, with a GPA of 3.89 out of 4.00.",
+    "buttons": {
+      "cv": {
+        "text": "See More CV",
+        "link": "https://drive.google.com/file/d/19lR3Okkzqe7eieg3YRgmyN30UVvUEenE/view?usp=sharing"
+      },
+      "portfolio": {
+        "text": "See More Portfolio",
+        "link": "#projects"
+      }
+    },
+    "socialMedia": [
+      {
+        "platform": "LinkedIn",
+        "icon": "bx bxl-linkedin-square",
+        "link": "https://www.linkedin.com/in/alghifarirasyidzola"
+      },
+      {
+        "platform": "Github",
+        "icon": "bx bxl-github",
+        "link": "https://github.com/alghifrz"
+      },
+      {
+        "platform": "Instagram",
+        "icon": "bx bxl-instagram-alt",
+        "link": "https://www.instagram.com/agifrz"
+      }
+    ],
+    "email": {
+      "address": "alghifarirasyidzola@gmail.com",
+      "icon": "bx bx-envelope"
+    }
+  },
+  "about": {
+    "about": "About Me",
+    "detail": "I am a passionate Computer Science student who enjoys coding and continuously exploring new technologies. I am actively involved in student organizations, where I develop leadership and teamwork skills. In addition to my academic pursuits, I love sharing knowledge as a tutor, helping others understand programming and tech concepts. I thrive in dynamic environments and am always eager to learn and take on new challenges."
+  },
+  "meta": {
+    "title": "Alghif Rz | Portfolio",
+    "description": "Personal portfolio of a passionate web developer."
+  }
+}
