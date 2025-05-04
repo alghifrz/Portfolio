@@ -87,7 +87,16 @@
 
 
 .animate-float-wild {
-  animation: floatWild1 10s ease-in-out infinite;
+  animation: floatWild1 20s ease-in-out infinite;
+}
+.animate-float-wild2 {
+  animation: floatWild2 20s ease-in-out infinite;
+}
+.animate-float-wild3 {
+  animation: floatWild3 20s ease-in-out infinite;
+}
+.animate-float-wild4 {
+  animation: floatWild4 20s ease-in-out infinite;
 }
 
 
@@ -237,3 +246,4 @@ body {
 .animate-float-slow {
   animation: float-slow 20s ease-in-out infinite;
 }
+

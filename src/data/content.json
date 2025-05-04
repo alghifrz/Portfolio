@@ -1,7 +1,7 @@
 {
   "navbar": {
     "logo": {
-      "text": "Alghif's Portfolio",
+      "text": "Alghif Rz | Portfolio",
       "highlight": "."
     },
     "menuItems": [
@@ -37,7 +37,7 @@
     "buttons": {
       "cv": {
         "text": "See More CV",
-        "link": "https://drive.google.com/file/d/19lR3Okkzqe7eieg3YRgmyN30UVvUEenE/view?usp=sharing"
+        "link": "https://drive.google.com/file/d/1Ntx_t-DcxirW0PE5THoQJO3rHSqdV1zl/view?usp=sharing"
       },
       "portfolio": {
         "text": "See More Portfolio",
@@ -66,9 +66,19 @@
       "icon": "bx bx-envelope"
     }
   },
+  "marquee": {
+    "gap": "✷",
+    "content": [
+      "Software Engineer",
+      "Web Developer",
+      "Data Science",
+      "Machine Learning",
+      "Mobile Developer"
+    ]
+  },
   "about": {
-    "about": "About Me",
-    "detail": "I am a passionate Computer Science student who enjoys coding and continuously exploring new technologies. I am actively involved in student organizations, where I develop leadership and teamwork skills. In addition to my academic pursuits, I love sharing knowledge as a tutor, helping others understand programming and tech concepts. I thrive in dynamic environments and am always eager to learn and take on new challenges."
+    "about": "Profile",
+    "detail": "Strong interest in software development, machine learning, web development, and data science. Experienced in developing applications using Java Swing and PyQt5, as well as web development with HTML, CSS, JavaScript, TypeScript, and frameworks or libraries like Laravel, Next.js, React.js, and Tailwind. Additionally, actively engaged in student organizations and enjoy sharing knowledge as a tutor, which helps develop both technical and leadership skills."
   },
   "meta": {
     "title": "Alghif Rz | Portfolio",

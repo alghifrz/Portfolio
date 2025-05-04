@@ -2,6 +2,7 @@ import Head from "next/head";
 import Hero from "@/components/Hero";
 import content from '@/data/content.json'
 import AboutMe from '@/components/AboutMe';
+import Marquee from "@/components/Marquee";
 
 export default function Home() {
   const { meta } = content;
@@ -13,9 +14,23 @@ export default function Home() {
         <meta name="description" content={meta.description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <div className="bg-white overflow-hidden">
+          {/* Bulat besar */}
+          <div className="fixed z-0 top-10 left-10 w-72 h-72 bg-blue-300 opacity-40 rounded-full blur-3xl animate-float-wild" />
 
-      <Hero />
-      <AboutMe />
+          {/* Lonjong horizontal */}
+          <div className="fixed z-0 top-40 right-20 w-120 h-120 bg-blue-300 opacity-40 rounded-full blur-3xl animate-float-wild2" />
+
+          {/* Bulat besar */}
+          <div className="fixed z-0 bottom-10 right-10 w-72 h-72 bg-blue-300 opacity-40 rounded-full blur-3xl animate-float-wild3" />
+
+          {/* Lonjong horizontal */}
+          <div className="fixed z-0 bottom-40 left-20 w-96 h-96 bg-blue-300 opacity-40 rounded-full blur-3xl animate-float-wild4" />
+
+        <Hero />
+        <Marquee />
+        <AboutMe />
+      </div>
     </>
   );
 }

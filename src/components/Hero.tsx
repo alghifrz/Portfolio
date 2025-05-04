@@ -8,19 +8,7 @@ const Hero = () => {
     return (
         <>
             {/* <section className="bg-gradient-to-r from-[#0f172a] to-[#1e3a8a] text-white min-h-screen flex items-center"> */}
-            <section className="min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white">
-                    {/* Bulat besar */}
-                    <div className="absolute z-0 top-10 left-10 w-72 h-72 bg-blue-300 opacity-40 rounded-full blur-2xl animate-float-wild" />
-
-                    {/* Lonjong horizontal */}
-                    <div className="absolute z-0 top-40 right-20 w-96 h-40 bg-purple-300 opacity-80 rounded-full blur-3xl animate-float-wild" />
-
-                    {/* Bulat besar */}
-                    <div className="absolute z-0 bottom-10 right-10 w-72 h-72 bg-blue-300 opacity-40 rounded-full blur-2xl animate-float-wild" />
-
-                    {/* Lonjong horizontal */}
-                    <div className="absolute z-0 bottom-40 left-20 w-96 h-40 bg-purple-300 opacity-80 rounded-full blur-3xl animate-float-wild" />
-
+            <section className="min-h-screen flex items-center relative overflow-hidden bg-transparant">
                 <div className="max-w-7xl mx-auto px-6 py-16 flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-30 relative z-10">
                     
                     {/* Text Content */}
@@ -48,7 +36,7 @@ const Hero = () => {
 
                         <div className="mt-4 flex flex-wrap gap-4">
                             <Link href={hero.buttons.cv.link} target='_blank'>
-                                <button className="cursor-pointer px-6 py-3 border-2 border-blue-400 bg-blue-400 rounded-full text-white hover:bg-blue-500 transition shadow-lg hover:shadow-xl">
+                                <button className="cursor-pointer px-6 py-3 border-2 font-semibold border-blue-400 bg-blue-400 rounded-full text-white hover:bg-blue-500 transition shadow-lg hover:shadow-xl">
                                     {hero.buttons.cv.text}
                                 </button>
                             </Link>
