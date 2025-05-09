@@ -80,6 +80,214 @@
     "about": "Profile",
     "detail": "Strong interest in software development, machine learning, web development, and data science. Experienced in developing applications using Java Swing and PyQt5, as well as web development with HTML, CSS, JavaScript, TypeScript, and frameworks or libraries like Laravel, Next.js, React.js, and Tailwind. Additionally, actively engaged in student organizations and enjoy sharing knowledge as a tutor, which helps develop both technical and leadership skills."
   },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "A snapshot of my growth through hands-on experiences.",
+    "key": "Key Competencies",
+    "step": [
+      {
+        "title": "Basic Programming Practicum Assistant",
+        "company": "Pertamina University",
+        "date": "Sep 2023 - Aug 2024",
+        "description": [
+          "Assisted lecturers in conducting practicum sessions focused on fundamental programming concepts and algorithms using C++.",
+          "Guided students through practicum assignments, helping them improve their code quality.",
+          "Developed and tested practicum modules to ensure alignment with the curriculum.",
+          "Assessed students' practicum results and provided constructive feedback to enhance their programming skills."
+        ],
+        "skill": ["C++ Programming", "MinGW Toolchain", "Basic Programming Conscepts", "Computational Logic"]
+      },
+      {
+        "title": "Samsung Innovation Campus Batch 5",
+        "company": "PT Samsung Electronics Indonesia",
+        "date": " Feb 2024 - Sep 2024",
+        "description": [
+          "Attended various sessions that provided insights into applying AI and ML to solve real-world problems, along with integrating IoT with smart devices.",
+          "Gained knowledge of machine learning concepts such as prediction models, classification, and deep learning algorithms, and how to apply them in data-driven projects.",
+          "Acquired skills in data processing and developing AI/ML models to create innovative solutions across different fields.",
+          "Gained hands-on experience in developing IoT, AI, and ML-based applications, and collaborated with other participants in team projects to tackle relevant technological challenges."
+        ],
+        "skill": ["Python Programming", "Jupyter Notebook", "Internet of Things (IoT)", "Artificial Intelligence (AI)", "Machine Learning"]
+      },
+      {
+        "title": " Calculus Teaching Mentor ",
+        "company": "Pertamina University",
+        "date": " Apr 2024 - Aug 2024",
+        "description": [
+          "/calculus.png"
+        ],
+        "skill": ["Calculus", "Math", "Teaching"]
+      },
+      {
+        "title": "Software Desktop Developer",
+        "company": "SKK Migas & Pertamina University",
+        "date": "Aug 2024 - Jan 2025",
+        "description": [
+          "Implementing a responsive and intuitive graphical user interface (GUI) using PyQt5.",
+          "Developing a project management system with the .skk format, including automatic data saving and loading.",
+          "Creating a data visualization feature using pickle to store and load user-generated plots.",
+          "Designing and optimizing QTreeView as a project navigation system, initially hiding local drives.",
+          "Resolving issues related to MDI subwindows, including dynamically reloading widgets.",
+          "Ensuring efficient integration between the UI components, file management, and data storage."
+        ],
+        "skill": ["Python Programming", "PyQt", "Pickle", "Object-Oriented Programming (OOP)", "Data Structures", "Data Visualization", "Troubleshooting"]
+      },
+      {
+        "title": "Data Structure and Algorithm Practicum Assistant",
+        "company": "Pertamina University",
+        "date": "Oct 2024 - Feb 2025",
+        "description": [
+          "Assisted lecturers in conducting practicum sessions focused on data structure concepts and algorithms using C++, such as linked lists, stacks, queues, etc.",
+          "Guided students through practicum assignments and provided feedback to improve their code quality.",
+          "Developed and tested practicum modules to ensure alignment with the course curriculum.",
+          "Evaluated students practicum results and provided constructive feedback to enhance their programming skills."
+        ],
+        "skill": ["C++ Programming", "Algorithms", "Data Structures"]
+      },
+      {
+        "title": "Risk Management Analyst Intern",
+        "company": "PT Pertamina (Persero)",
+        "date": "Feb 2025 - Mar 2025",
+        "description": [
+          "Collect risk data from Pertamina's subsidiaries, clean and manage it for visual analysis.",
+          "Design interactive dashboards using Power BI to monitor and analyze risks, integrating multiple data sources for a comprehensive risk profile.",
+          "Reports to support management decisions, and provide risk mitigation recommendations."
+        ],
+        "skill": ["Microsoft Power BI", "Microsoft Excel", "Relational Data Modelling", "Data Visualization", "Data Science"]
+      }
+    ]
+  },
+  "activitiessession": {
+    "title": "Activities & Skills",
+    "subtitle": "A showcase of my involvement and technical expertise."
+  },
+  "activities": {
+    "title": "Activities & Organizations",
+    "detail": [
+      {
+        "name": "HMIK UP | Computer Science Student Association",
+        "role": "Head of Technology and Education Department",
+        "date": "Jan 2025 - Present"
+      },
+      {
+        "name": "CITE UP 2024 | Computer Science National Event & Competition",
+        "role": "Head of Competition Division",
+        "date": "Jan 2024 - Sep 2024"
+      },
+      {
+        "name": "MIF 3.0 | Pertamina University's National Islamic Event & Competition",
+        "role": "Head of Technology and Education Department",
+        "date": "Oct 2023 - Mar 2024"
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "detail": [
+      {
+        "name": "Pertamina University",
+        "degree": "Undergraduate Computer Science, GPA 3.89/4.00",
+        "date": "Sep 2022 - Present",
+        "logo": "LogoUPk.png"
+      },
+      {
+        "name": "SMAN Agam Cendekia",
+        "degree": "Science, GPA 9.0/10",
+        "date": "2019 - 2022",
+        "logo": "LogoSMANAC.png"
+      }
+    ]
+  },
+  "skills": {
+    "title": "Technical Skills",
+    "detail": [
+      { "name": "Python", "logo": "FaPython", "color": "#3776AB" },
+      { "name": "C++", "logo": "SiCplusplus", "color": "#00599C" },
+      { "name": "Java", "logo": "FaJava", "color": "#007396" },
+      { "name": "PHP", "logo": "FaPhp", "color": "#777BB4" },
+      { "name": "JavaScript", "logo": "SiJavascript", "color": "#F7DF1E" },
+      { "name": "TypeScript", "logo": "SiTypescript", "color": "#3178C6" },
+      { "name": "TailwindCSS", "logo": "SiTailwindcss", "color": "#06B6D4" },
+      { "name": "Dart", "logo": "SiDart", "color": "#0175C2" },
+      { "name": "Next.js", "logo": "SiNextdotjs", "color": "#FFFFFF" },
+      { "name": "Laravel", "logo": "SiLaravel", "color": "#FF2D20" },
+      { "name": "React.js", "logo": "FaReact", "color": "#61DAFB" },
+      { "name": "Node.js", "logo": "FaNodeJs", "color": "#339933" },
+      { "name": "Flutter", "logo": "SiFlutter", "color": "#02569B" },
+      { "name": "MySQL", "logo": "SiMysql", "color": "#4479A1" },
+      { "name": "SQLite", "logo": "SiSqlite", "color": "#003B57" },
+      { "name": "MongoDB", "logo": "SiMongodb", "color": "#47A248" },
+      { "name": "Firebase", "logo": "SiFirebase", "color": "#FFCA28" },
+      { "name": "REST API", "logo": "SiPostman", "color": "#FF6C37" },
+      { "name": "Git", "logo": "FaGitAlt", "color": "#F05032" },
+      { "name": "GitHub", "logo": "FaGithub", "color": "#FFFFFF" },
+      { "name": "Tableau", "logo": "SiTableau", "color": "#E97627" },
+      { "name": "Figma", "logo": "FaFigma", "color": "#F24E1E" },
+      { "name": "Photoshop", "logo": "SiAdobephotoshop", "color": "#31A8FF" },
+      { "name": "Premiere Pro", "logo": "SiAdobepremierepro", "color": "#9999FF" }
+    ]
+  },
+  "certifications": {
+    "title": "Certifications",
+    "detail": [
+      {
+        "name": "Basic Python (Gold)",
+        "logo": "https://api.badgr.io/public/badges/_iub8SRfTnOye29DymPA6A/image",
+        "issuer": "Skilvul",
+        "date": "2024", 
+        "link": "https://badgr.com/public/assertions/Ewk4cF38TDC57eJ_XGW8EA?identity__email=alghifarirasyidzola@gmail.com"
+      },
+      {
+        "name": "Advance Python (Gold)",
+        "logo": "https://api.badgr.io/public/badges/n9ox20fxRcucNyT53jonvA/image",
+        "issuer": "Skilvul",
+        "date": "2024", 
+        "link": "https://badgr.com/public/assertions/yprQd7TxQpi47jCHANDlWw?identity__email=alghifarirasyidzola@gmail.com"
+      },
+      {
+        "name": "Algorithm & Data Structures with Python (Gold)",
+        "logo": "https://api.badgr.io/public/badges/jx_ZlqL2RGyGMBkh00mp8g/image",
+        "issuer": "Skilvul",
+        "date": "2024", 
+        "link": "https://badgr.com/public/assertions/n3ey6N04Rmel08iV2M7ttg?identity__email=alghifarirasyidzola@gmail.com"
+      },
+      {
+        "name": "Internet of Things (IoT) - Fundamentals (Gold)",
+        "logo": "https://api.badgr.io/public/badges/Kgwq-ztlQFal8gJSitYuuA/image",
+        "issuer": "Skilvul",
+        "date": "2024", 
+        "link": "https://badgr.com/public/assertions/9r9o6_H-QdqaUJCFPHP9hQ?identity__email=alghifarirasyidzola@gmail.com"
+      },
+      {
+        "name": "IoT Development with ESP32 (Gold)",
+        "logo": "https://api.badgr.io/public/badges/PRZrKUh7Q2SlWGjJDOogrw/image",
+        "issuer": "Skilvul",
+        "date": "2024", 
+        "link": "https://badgr.com/public/assertions/bi-FYj07T42kvzjkl2clDA?identity__email=alghifarirasyidzola@gmail.com"
+      },
+      {
+        "name": "Internet of Things (IoT) Project - Building Health Monitoring System (Gold)",
+        "logo": "https://api.badgr.io/public/badges/BJKo4NjuTDuam1sH_Z4H9w/image",
+        "issuer": "Skilvul",
+        "date": "2024", 
+        "link": "https://badgr.com/public/assertions/_rsTo4glR1CiUK91IfyZQQ?identity__email=alghifarirasyidzola@gmail.com"
+      },
+      {
+        "name": "Internet of Things (IoT) - Software and Platforms (Gold)",
+        "logo": "https://api.badgr.io/public/badges/MbKyqQyyRo2NKPpZWbarFg/image",
+        "issuer": "Skilvul",
+        "date": "2024", 
+        "link": "https://badgr.com/public/assertions/YHfeMdb7R1ysVA7GKVyT_w?identity__email=alghifarirasyidzola@gmail.com"
+      },
+      {
+        "name": "Internet of Things (IoT) - Software and Platforms (Gold)",
+        "logo": "https://api.badgr.io/public/badges/EVCJxczyT8GzxfFEEoraag/image",
+        "issuer": "Skilvul",
+        "date": "2024", 
+        "link": "https://badgr.com/public/assertions/WCecajodS_2Kz31U1tDcGA?identity__email=alghifarirasyidzola@gmail.com"
+      }
+    ]
+  },
   "meta": {
     "title": "Alghif Rz | Portfolio",
     "description": "Personal portfolio of a passionate web developer."

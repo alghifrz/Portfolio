@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Hero from "@/components/Hero";
 import content from '@/data/content.json'
-import AboutMe from '@/components/AboutMe';
 import Marquee from "@/components/Marquee";
+import Content from "@/components/Content";
 
 export default function Home() {
   const { meta } = content;
@@ -29,7 +29,7 @@ export default function Home() {
 
         <Hero />
         <Marquee />
-        <AboutMe />
+        <Content />
       </div>
     </>
   );

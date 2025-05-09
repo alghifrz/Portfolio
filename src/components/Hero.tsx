@@ -67,7 +67,7 @@ const Hero = () => {
                     {/* Image */}
                     <div className="md:w-1/2 relative">
                         <Image
-                            src="/alghif.png"
+                            src="/foto.png"
                             alt="Hero Image"
                             width={300}
                             height={300}
