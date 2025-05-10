@@ -2,8 +2,10 @@ import React from 'react';
 import AboutMe from './Profile';
 import Experience from './Experience';
 import Activities from './Activities';
-
+import FeaturedProjects from './FeaturedProjects';
+import content from '@/data/content.json';
 const Content = () => {
+    const { projects } = content;
     return (
         <>
             <section className="relative md:py-20 py-2 px-6 bg-black backdrop-blur-3xl text-white overflow-hidden">
@@ -24,6 +26,8 @@ const Content = () => {
                 <AboutMe />
                 <Experience />
                 <Activities />
+                
+                <FeaturedProjects projects={projects.featured}/>    
             </section>
         </>
     )

@@ -18,10 +18,6 @@
         "href": "/projects"
       },
       {
-        "name": "Skills",
-        "href": "/skills"
-      },
-      {
         "name": "Contact",
         "href": "/contact"
       }
@@ -285,6 +281,155 @@
         "issuer": "Skilvul",
         "date": "2024", 
         "link": "https://badgr.com/public/assertions/WCecajodS_2Kz31U1tDcGA?identity__email=alghifarirasyidzola@gmail.com"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "A showcase of my best work and technical expertise",
+    "featured": [
+      {
+        "title": "Alghif Rz | Portfolio",
+        "description": "A professional portfolio website",
+        "image": "portfolio.png",
+        "technologies": ["TypeScript", "JavaScript", "Next.js", "React.js", "TailwindCSS", "FramerMotion"],
+        "github": "https://github.com/alghifrz/Portfolio",
+        "demo": "",
+        "cat": "Web Development",
+        "featured": true,
+        "preview": "portfolio"
+      },
+      {
+        "title": "DigitalExposome - Mental Wellbeing Classification",
+        "description": "Predicting a person's mental wellbeing level based on air quality data and their physiological signal collected from wearable devices.",
+        "image": "menta.png",
+        "technologies": ["Jupyter Notebook", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn"],
+        "github": "https://github.com/alghifrz/DigitalExposome-Classification",
+        "demo": "",
+        "cat": "Machine Learning",
+        "featured": true,
+        "preview": "digitalexposome"
+      },
+      {
+        "title": "UPartner Web",
+        "description": "A full-stack website that connects lecturers and students for project collaboration, handling the entire development process from requirements gathering and system design to implementation and testing.",
+        "image": "upartner.png",
+        "technologies": ["Laravel", "JavaScript", "TailwindCSS", "MySQL", "PHP", "Blade", "CSS", "Figma", "Draw.io"],
+        "github": "https://github.com/alghifrz/UPartner-WEB",
+        "demo": "",
+        "cat": "Web Development",
+        "featured": true,
+        "preview": "UPartner"
+      },
+      {
+        "title": "Productivity Mobile App",
+        "description": "A simple and beautifully designed productivity application built using Flutter, designed to help users manage daily tasks efficiently.",
+        "image": "productivity.png",
+        "technologies": ["Dart", "Flutter", "Java", "C++", "CMake", "C"],
+        "github": "https://github.com/alghifrz/Productivity-App",
+        "demo": "",
+        "cat": "Mobile Development",
+        "featured": true,
+        "preview": "Productivity"
+      },
+      {
+        "title": "GoGrow - Program List",
+        "description": "A React-based web app that displays programs or events in a responsive card layout, with each card showing the title, description, date, and location. It uses modular components like `CardProgram` and `ListProgram` for clean and maintainable code.",
+        "image": "gogrowprogram.png",
+        "technologies": ["JavaScript", "React.js", "Vite", "TailwindCSS", "React Router DOM", "JSON Server", "ESLint"],
+        "github": "https://github.com/alghifrz/GoGrow-program-list-react",
+        "demo": "",
+        "cat": "Web Development",
+        "featured": true,
+        "preview": "Program"
+      },
+      {
+        "title": "GoGrow - ToDo App",
+        "description": "A simple Todo application built with React and Vite that allows users to manage their daily task list through a lightweight and responsive interface.",
+        "image": "todoreact.png",
+        "technologies": ["JavaScript", "React.js", "Vite", "ESLint", "CSS", "JSON Server"],
+        "github": "https://github.com/alghifrz/GoGrow-todo-app",
+        "demo": "",
+        "cat": "Web Development",
+        "featured": true,
+        "preview": "Todo"
+      },
+      {
+        "title": "Speech Accent Analysis using MFCC",
+        "description": "Analyzed the speech accents of Universitas Pertamina students from various regions in Indonesia using the Mel Frequency Cepstral Coefficients (MFCC) technique.",
+        "image": "speech.png",
+        "technologies": ["Jupyter Notebook", "Python", "Pydub", "Librosa"],
+        "github": "https://github.com/alghifrz/SpeechAccent-MFCC",
+        "demo": "",
+        "cat": "Data Science",
+        "featured": true,
+        "preview": "speech-accent"
+      },
+      {
+        "title": "Anemic Classification",
+        "description": "This project uses traditional machine learning (Random Forest Classifier) to classify blood smear images into two categories: Anemic and Non-Anemic. The model is trained on image data that has been resized, flattened, and standardized.",
+        "image": "anemic.png",
+        "technologies": ["Jupyter Notebook", "Python", "Scikit-learn", "Pandas", "Matplotlib", "Seaborn", "Random Forest Classifier"],
+        "github": "https://github.com/alghifrz/Anemic-Classification",
+        "demo": "",
+        "cat": "Machine Learning",
+        "featured": true,
+        "preview": "anemic"
+      },
+      {
+        "title": "Dashboard Subsidiary Risk Management Pertamina",
+        "description": "This dashboard helps PT Pertamina monitor risks systematically, enhance transparency, and make data-driven decisions to prevent losses and ensure business continuity.",
+        "image": "bi.png",
+        "technologies": ["Power BI", "Microsoft Excel", "Relational Data Modelling", "Data Visualization", "Data Science", "Data Analysis", "DAX", "Power Query"],
+        "github": "",
+        "demo": "",
+        "cat": "Data Analysis",
+        "featured": true,
+        "preview": "Bi"
+      },
+      {
+        "title": "Money Management System",
+        "description": "Money Management CSDev is a Laravel-based web application designed to help users manage their personal finances. It allows users to record income and expenses, and provides an intuitive interface to monitor their financial status in real time.",
+        "image": "moneymanagement.png",
+        "technologies": ["Laravel", "JavaScript", "TailwindCSS", "MySQL", "PHP", "Blade"],
+        "github": "https://github.com/alghifrz/money-management-csdev",
+        "demo": "",
+        "cat": "Web Development",
+        "featured": true,
+        "preview": "Money"
+      },
+      {
+        "title": "Scheduling System",
+        "description": "This project is a web-based scheduling system where users can log in, add their activities, and view them on a timeline-style calendar. Users can also see other users' schedules, distinguished by different color indicators.",
+        "image": "uas.png",
+        "technologies": ["Laravel", "JavaScript", "TailwindCSS", "MySQL", "PHP", "Blade"],
+        "github": "https://github.com/alghifrz/money-management-csdev",
+        "demo": "",
+        "cat": "Web Development",
+        "featured": true,
+        "preview": "Schedule"
+      },
+      {
+        "title": "Real Madrid static Blog",
+        "description": "RealMadrid-BLOG is a front-end blog website dedicated to Real Madrid fans. It features a clean, responsive interface where users can view blog posts and explore football-related content.",
+        "image": "realmadrid.png",
+        "technologies": ["Laravel", "JavaScript", "TailwindCSS", "PHP", "Blade"],
+        "github": "https://github.com/alghifrz/RealMadrid-BLOG",
+        "demo": "",
+        "cat": "Web Development",
+        "featured": true,
+        "preview": "RMBlog"
+      },
+      {
+        "title": "Field and Well Production Benchmarking",
+        "description": "The Field and Well Production Benchmarking application helps the oil and gas industry optimize production and efficiency through data integration, performance analysis, and intuitive visualization for better decision-making.",
+        "image": "skk.png",
+        "technologies": ["Python", "PyQt", "Jupyter Notebook", "Pickle", "JSON", "Data Visualization", "Data Science", "Data Analysis"],
+        "github": "",
+        "demo": "",
+        "cat": "Software Development",
+        "featured": true,
+        "preview": "SKK"
       }
     ]
   },
