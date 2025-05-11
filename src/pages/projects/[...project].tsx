@@ -5,20 +5,6 @@ import { FaGithub, FaExternalLinkAlt, FaArrowLeft, FaImage, FaArrowRight } from 
 import Link from 'next/link';
 import content from '@/data/content.json';
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
-
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  technologies: string[];
-  github: string;
-  demo: string;
-  featured: boolean;
-  cat: string;
-  previewImages?: string[];
-  preview?: string;
-}
 
 const ProjectDetail = () => {
   const router = useRouter();

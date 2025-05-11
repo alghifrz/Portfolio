@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
 import content from '@/data/content.json';
 import { motion } from 'framer-motion';
-import { circle, li } from 'framer-motion/client';
 
 const steps = content.experience.step;
 

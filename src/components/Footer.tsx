@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaWhatsapp } from 'react-icons/fa';
-import Image from 'next/image';
 import content from '@/data/content.json';
 
 export default function Footer() {

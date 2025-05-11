@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import content from '@/data/content.json';
 import Marquee from "@/components/Marquee";
 import Content from "@/components/Content";
-import FeaturedProjects from '@/components/FeaturedProjects';
 import Contact from '@/components/Contact';
 
 export default function Home() {
