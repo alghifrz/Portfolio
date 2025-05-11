@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { useRouter } from 'next/router'
 import content from '@/data/content.json'
@@ -17,20 +17,23 @@ const Navbar = () =>  {
     const { navbar } = content;
     const router = useRouter();
 
-    // Throttle function to limit scroll event firing
-    const throttle = (func: Function, limit: number) => {
-        let inThrottle: boolean;
-        return function(this: any, ...args: any[]) {
-            if (!inThrottle) {
-                func.apply(this, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        }
-    }
+    // Throttle function using useRef to persist state
+    const useThrottle = (func: (...args: unknown[]) => void, limit: number) => {
+        const inThrottle = useRef(false);
 
-    // Simple scroll handler
-    const handleScroll = useCallback(throttle(() => {
+        return useCallback((...args: unknown[]) => {
+            if (!inThrottle.current) {
+                func(...args);
+                inThrottle.current = true;
+                setTimeout(() => {
+                    inThrottle.current = false;
+                }, limit);
+            }
+        }, [func, limit]);
+    };
+
+    // Throttled scroll handler
+    const throttledHandleScroll = useThrottle(() => {
         // Don't check on projects page
         if (router.pathname.startsWith('/projects')) return;
 
@@ -74,6 +77,7 @@ const Navbar = () =>  {
             }
         }
 
+        // Update active section and URL hash if needed
         if (currentSection !== activeSection) {
             setActiveSection(currentSection);
             // Update URL hash without scroll
@@ -83,7 +87,7 @@ const Navbar = () =>  {
                 window.history.replaceState(null, '', window.location.pathname);
             }
         }
-    }, 100), [activeSection, router.pathname]);
+    }, 100);
 
     useEffect(() => {
         setMounted(true)
@@ -95,9 +99,9 @@ const Navbar = () =>  {
         }
 
         // Add scroll event listener
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [handleScroll])
+        window.addEventListener('scroll', throttledHandleScroll);
+        return () => window.removeEventListener('scroll', throttledHandleScroll);
+    }, [throttledHandleScroll])
 
     // Handle hash changes
     useEffect(() => {
@@ -145,50 +149,6 @@ const Navbar = () =>  {
         }
 
         return false;
-    }
-
-    const handleSectionClick = async (sectionId: string) => {
-        setIsOpen(false);
-        
-        // If we're on the projects page, navigate to home with hash
-        if (router.pathname.startsWith('/projects')) {
-            setActiveSection(sectionId);
-            await router.push(`/#${sectionId}`);
-            // Add a longer delay to ensure the page is loaded
-            await new Promise(resolve => setTimeout(resolve, 300));
-            const element = document.getElementById(sectionId);
-            if (element) {
-                const headerOffset = 80;
-                const rect = element.getBoundingClientRect();
-                const offsetPosition = rect.top + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        } else {
-            // For navigation between sections
-            const element = document.getElementById(sectionId);
-            if (element) {
-                const headerOffset = 80;
-                const rect = element.getBoundingClientRect();
-                const offsetPosition = rect.top + window.pageYOffset - headerOffset;
-
-                // Update URL hash without triggering scroll
-                window.history.pushState(null, '', `#${sectionId}`);
-                setActiveSection(sectionId);
-
-                // Add a small delay before scrolling
-                await new Promise(resolve => setTimeout(resolve, 50));
-
-                // Smooth scroll to the section
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
     }
 
     // Handle route changes

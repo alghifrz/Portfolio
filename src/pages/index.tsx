@@ -6,7 +6,7 @@ import Content from "@/components/Content";
 import Contact from '@/components/Contact';
 
 export default function Home() {
-  const { meta, projects } = content;
+  const { meta } = content;
   
   return (
     <>

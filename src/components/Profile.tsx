@@ -22,7 +22,7 @@ const Profile = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [photos.length]);
+  }, []);
 
   return (
     <section id="profile" className="relative py-5 z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-start items-center gap-0 md:gap-20 md:py-32">

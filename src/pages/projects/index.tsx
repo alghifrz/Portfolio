@@ -68,7 +68,7 @@ const Projects = () => {
     if (typeof category === 'string' && category !== selectedCategory) {
       setSelectedCategory(category);
     }
-  }, [category]);
+  }, [category, selectedCategory]);
 
   if (!isMounted) {
     return null;

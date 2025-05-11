@@ -1,16 +1,16 @@
 import { useRouter } from 'next/router';
 import Head from "next/head";
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaArrowLeft, FaImage, FaArrowRight } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Link from 'next/link';
 import content from '@/data/content.json';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const ProjectDetail = () => {
   const router = useRouter();
   const { project } = router.query;
   const { meta, projects } = content;
-  const [previewImages, setPreviewImages] = useState<string[]>([]);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [previewFiles, setPreviewFiles] = useState<string[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,7 +28,8 @@ const ProjectDetail = () => {
         try {
           const response = await fetch(`/api/preview-images?project=${currentProject.preview}`);
           const data = await response.json();
-          setPreviewImages(data.images);
+          // Hapus bagian ini karena tidak digunakan lagi
+          // setPreviewImages(data.images);
         } catch (error) {
           console.error('Error loading preview images:', error);
         }
@@ -451,10 +452,12 @@ const ProjectDetail = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <img
+                        <Image
                           src={`/previews/${currentProject.preview}/${encodeURIComponent(file)}`}
                           alt={`Thumbnail ${index + 1}`}
                           className="w-full h-full object-cover"
+                          width={100}
+                          height={100}
                         />
                         <div className={`absolute inset-0 transition-opacity duration-300 ${
                           index === currentIndex ? 'bg-blue-500/20' : 'bg-black/40'

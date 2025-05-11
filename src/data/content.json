@@ -196,13 +196,13 @@
         "name": "Pertamina University",
         "degree": "Undergraduate Computer Science, GPA 3.89/4.00",
         "date": "Sep 2022 - Present",
-        "logo": "LogoUPk.png"
+        "logo": "/LogoUPk.png"
       },
       {
         "name": "SMAN Agam Cendekia",
         "degree": "Math Science",
         "date": "2019 - 2022",
-        "logo": "LogoSMANAC.png"
+        "logo": "/LogoSMANAC.png"
       }
     ]
   },

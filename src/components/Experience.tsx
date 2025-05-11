@@ -396,7 +396,7 @@ export default function Roadmap() {
                 >
                   {isMobile ? (
                     // Mobile: Break text into maximum 2 lines
-                    steps[i].title.split(' ').reduce((acc, word, idx, arr) => {
+                    steps[i].title.split(' ').reduce((acc, word, idx) => {
                       if (idx === 0) return word;
                       const lines = acc.split('\n');
                       // If already 2 lines, just append to second line

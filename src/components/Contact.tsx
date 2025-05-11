@@ -81,10 +81,10 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
-            Let's Connect
+            Let&rsquo;s Connect
           </h2>
           <p className="text-gray-700 text-lg max-w-2xl mx-auto">
-            Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!
+            Have a project in mind or want to discuss potential opportunities? I&rsquo;d love to hear from you!
           </p>
         </motion.div>
 

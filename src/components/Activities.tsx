@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import techStack from '@/data/content.json';
 import { BsGrid, BsListUl } from 'react-icons/bs';
+import Image from 'next/image';
 import { FaReact, FaNodeJs, FaPython, FaGitAlt, FaFigma, FaJava, FaPhp, FaGithub } from 'react-icons/fa';
 import {
   SiCplusplus,
@@ -21,7 +22,6 @@ import {
   SiAdobepremierepro
 } from 'react-icons/si';
 import { IconType } from 'react-icons';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 interface Skill {
@@ -195,9 +195,11 @@ export default function Activities() {
                       whileHover={{ scale: 1.05 }}
                       className="w-20 h-20 md:w-22 md:h-22 flex items-center justify-center"
                     >
-                      <img
+                      <Image
                         src={edu.logo}
                         alt={edu.name}
+                        width={50}
+                        height={50}
                         className="w-full h-full object-contain group-hover:opacity-100 transition-all duration-300"
                       />
                     </motion.div>
@@ -339,9 +341,11 @@ export default function Activities() {
                     whileHover={{ scale: 1.1 }}
                     className="w-12 h-12 md:w-14 md:h-14 mb-2 relative"
                   >
-                    <img
+                    <Image
                       src={cert.logo}
                       alt={cert.name}
+                      width={50}
+                      height={50}
                       className="w-full h-full object-contain transition-all duration-300"
                     />
                   </motion.div>
