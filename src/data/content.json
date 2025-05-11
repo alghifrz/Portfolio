@@ -7,11 +7,19 @@
     "menuItems": [
       {
         "name": "Home",
-        "href": "/"
+        "href": "/#home"
       },
       {
-        "name": "About Me",
-        "href": "/about"
+        "name": "Profile",
+        "href": "/#profile"
+      },
+      {
+        "name": "Experience",
+        "href": "/#experience"
+      },
+      {
+        "name": "Activities & Skills",
+        "href": "/#activities"
       },
       {
         "name": "Projects",
@@ -19,7 +27,7 @@
       },
       {
         "name": "Contact",
-        "href": "/contact"
+        "href": "/#contact"
       }
     ]
   },
@@ -60,6 +68,10 @@
     "email": {
       "address": "alghifarirasyidzola@gmail.com",
       "icon": "bx bx-envelope"
+    },
+    "whatsapp": {
+      "number": "6282172772394",
+      "icon": "bx bxl-whatsapp"
     }
   },
   "marquee": {
@@ -308,7 +320,7 @@
         "demo": "",
         "cat": "Machine Learning",
         "featured": true,
-        "preview": "digitalexposome"
+        "preview": "Digital"
       },
       {
         "title": "UPartner Web",
@@ -363,7 +375,7 @@
         "demo": "",
         "cat": "Data Science",
         "featured": true,
-        "preview": "speech-accent"
+        "preview": "Speech"
       },
       {
         "title": "Anemic Classification",
@@ -374,7 +386,7 @@
         "demo": "",
         "cat": "Machine Learning",
         "featured": true,
-        "preview": "anemic"
+        "preview": "Anemic"
       },
       {
         "title": "Dashboard Subsidiary Risk Management Pertamina",

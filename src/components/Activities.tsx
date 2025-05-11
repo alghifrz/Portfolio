@@ -29,7 +29,7 @@ interface Skill {
   color: string;
 }
 
-const Activities = () => {
+export default function Activities() {
   const [isGridView, setIsGridView] = useState(true);
   
   const iconComponents: Record<string, IconType> = {
@@ -75,9 +75,9 @@ const Activities = () => {
     .filter((skill): skill is Skill => skill !== null);
 
   return (
-    <div className="px-2 md:px-8 mt-24 md:mt-48 md:mx-38">
-      <div className="mb-4 md:mb-20">
-        <h1 className="text-3xl md:text-5xl font-bold mb-2 md:mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+    <section id="activities" className="px-4 md:px-8 mt-24 md:mt-48 md:pt-24">
+      <div className="mb-8 md:mb-20">
+        <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
           {techStack.activitiessession.title}
         </h1>
         <p className="text-white mb-4 md:mb-6 text-center text-xs md:text-2xl">
@@ -85,18 +85,18 @@ const Activities = () => {
         </p>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-8 h-full">
+      <div className="flex flex-col md:flex-row gap-8 h-full md:max-w-[1400px] mx-auto">
         {/* Left Column */}
         <div className="md:w-1/2 space-y-8 h-full">
           {/* Activities & Organizations */}
-          <div className="relative bg-white/10 backdrop-blur-xl rounded-xl p-4 md:p-6 md:pb-2
+          <div className="relative bg-white/10 backdrop-blur-xl rounded-xl p-6 md:p-8
                         [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40]
                         hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60]
                         transition-all duration-300">
-            <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+            <h2 className="text-2xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
               {techStack.activities.title}
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-6">
               <ul style={{ listStyleType: 'none', padding: 0 }}>
                 {techStack.activities.detail.map((exp, index) => (
                   <li key={index}>
@@ -112,14 +112,14 @@ const Activities = () => {
           </div>
 
           {/* Education */}
-          <div className="relative bg-white/10 backdrop-blur-xl rounded-xl p-4 md:p-6 md:pb-2
+          <div className="relative bg-white/10 backdrop-blur-xl rounded-xl p-6 md:p-8
                         [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40]
                         hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60]
                         transition-all duration-300">
-            <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+            <h2 className="text-2xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
               {techStack.education.title}
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {techStack.education.detail.map((edu, index) => (
                 <div key={index} className="border-l-2 border-blue-500 pl-4 my-10 mb-8 relative">
                   <div className="flex items-center gap-4">
@@ -145,11 +145,11 @@ const Activities = () => {
         {/* Right Column - Skills */}
         <div className="md:w-1/2 h-full space-y-8">
           {/* Technical Skills Section */}
-          <div className="relative bg-white/10 backdrop-blur-xl rounded-xl p-4 md:p-6
+          <div className="relative bg-white/10 backdrop-blur-xl rounded-xl p-6 md:p-8
                         [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40]
                         hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60]
                         transition-all duration-300">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex justify-between items-center mb-8">
               <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
                 {techStack.skills.title}
               </h2>
@@ -203,11 +203,11 @@ const Activities = () => {
           </div>
 
           {/* Certifications Section */}
-          <div className="relative bg-white/10 backdrop-blur-xl rounded-xl p-4 md:p-6
+          <div className="relative bg-white/10 backdrop-blur-xl rounded-xl p-6 md:p-8
                         [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40]
                         hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60]
                         transition-all duration-300">
-            <h2 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+            <h2 className="text-2xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
               {techStack.certifications.title}
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -244,8 +244,6 @@ const Activities = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Activities;
+}

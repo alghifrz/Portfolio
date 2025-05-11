@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 interface Project {
   title: string;
@@ -19,8 +20,16 @@ interface FeaturedProjectsProps {
 }
 
 const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
-  // Only take the first 3 projects
+  const [isMounted, setIsMounted] = useState(false);
   const featuredProjects = projects.slice(0, 3);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <section className="py-20 mt-24 md:mt-48">
@@ -51,13 +60,15 @@ const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
                         hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60]"
             >
               <div className="relative h-48 w-full overflow-hidden">
-                <img
-                  src={project.image}
+                <Image
+                  src={`/${project.image}`}
                   alt={project.title}
-                  className="object-cover w-full h-full"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                  priority={index < 3}
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/50 to-purple-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/50 to-purple-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="flex gap-4">
                     <a
                       href={project.github}
@@ -81,12 +92,14 @@ const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
                 </div>
               </div>
 
-              <div className="p-6 flex flex-col min-h-[24rem] ">
-                <div className="flex-grow">
+              <div className="flex flex-col justify-between min-h-[24rem] p-6">
+                <div className="">
                   <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-400 to-purple-600 text-white text-sm font-medium rounded-full mb-3">
                     {project.cat}
                   </span>
-                  <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-2">{project.title}</h3>
+                  <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-2">
+                    {project.title}
+                  </h3>
                   <p className="text-gray-300 mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech) => (
@@ -102,7 +115,7 @@ const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
                 </div>
                 <div className="flex justify-end">
                   <Link
-                    href={`/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={`/projects/${encodeURIComponent(project.title.toLowerCase().replace(/\s+/g, '-'))}`}
                     className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-400 to-purple-600 text-white rounded-full 
                             hover:from-blue-500 hover:to-purple-700 transition-all duration-300 text-sm
                             [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_20px_1px_#60a5fa40]

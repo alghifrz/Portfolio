@@ -4,6 +4,7 @@ import content from '@/data/content.json';
 import Marquee from "@/components/Marquee";
 import Content from "@/components/Content";
 import FeaturedProjects from '@/components/FeaturedProjects';
+import Contact from '@/components/Contact';
 
 export default function Home() {
   const { meta, projects } = content;
@@ -32,6 +33,7 @@ export default function Home() {
         <Marquee />
         <Content />
         <Marquee />
+        <Contact />
       </div>
     </>
   );

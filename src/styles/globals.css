@@ -125,8 +125,6 @@
   animation: floatWild10 20s ease-in-out infinite;
 }
 
-
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -228,13 +226,15 @@ body {
 
 @keyframes float {
   0% {
-    transform: translate(0, 0);
+    transform: translateY(0) translateX(0);
+    opacity: 0;
   }
   50% {
-    transform: translate(10px, -10px);
+    opacity: 0.8;
   }
   100% {
-    transform: translate(0, 0);
+    transform: translateY(-100px) translateX(20px);
+    opacity: 0;
   }
 }
 
@@ -263,7 +263,7 @@ body {
 }
 
 .animate-float {
-  animation: float 15s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
 }
 
 .animate-float-delayed {

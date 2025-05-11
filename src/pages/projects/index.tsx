@@ -1,13 +1,78 @@
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import content from '@/data/content.json';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { 
+  FaCode, 
+  FaDatabase, 
+  FaRobot, 
+  FaMobile, 
+  FaGamepad, 
+  FaTools,
+  FaLayerGroup,
+  FaAllergies
+} from 'react-icons/fa';
+import { IconType } from 'react-icons';
+import { useEffect, useState } from 'react';
 
 const Projects = () => {
   const { meta, projects } = content;
   const allProjects = projects.featured;
+  const [isMounted, setIsMounted] = useState(false);
+  const router = useRouter();
+  const { category } = router.query;
+  
+  // Initialize selectedCategory from URL query parameter or default to 'All'
+  const [selectedCategory, setSelectedCategory] = useState(
+    typeof category === 'string' ? category : 'All'
+  );
+
+  // Update URL when category changes
+  const handleCategoryChange = (newCategory: string) => {
+    setSelectedCategory(newCategory);
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, category: newCategory }
+    }, undefined, { shallow: true });
+  };
+  
+  // Get unique categories
+  const categories = ['All', ...new Set(allProjects.map(project => project.cat))];
+
+  // Category icons mapping with type safety
+  const categoryIcons: Record<string, IconType> = {
+    'All': FaAllergies,
+    'Web Development': FaCode,
+    'Data Science': FaDatabase,
+    'Machine Learning': FaRobot,
+    'Mobile Development': FaMobile,
+    'Game Development': FaGamepad,
+    'DevOps': FaTools,
+    'UI/UX Design': FaLayerGroup,
+  };
+
+  // Filter projects based on selected category
+  const filteredProjects = selectedCategory === 'All' 
+    ? allProjects 
+    : allProjects.filter(project => project.cat === selectedCategory);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Update selectedCategory when URL query changes
+  useEffect(() => {
+    if (typeof category === 'string' && category !== selectedCategory) {
+      setSelectedCategory(category);
+    }
+  }, [category]);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <>
@@ -45,10 +110,68 @@ const Projects = () => {
             <p className="text-white mb-4 md:mb-6 text-center text-xs md:text-2xl">
               A comprehensive showcase of my work and technical expertise
             </p>
+
+            {/* Enhanced 3D Category Filter */}
+            <div className="flex flex-wrap justify-center gap-4 mt-12 perspective-1000">
+              {categories.map((category) => {
+                const Icon = categoryIcons[category] || FaAllergies;
+                return (
+                  <motion.button
+                    key={category}
+                    onClick={() => handleCategoryChange(category)}
+                    whileHover={{ 
+                      scale: 1.05,
+                      rotateX: 10,
+                      rotateY: 10,
+                      transition: { duration: 0.2 }
+                    }}
+                    whileTap={{ 
+                      scale: 0.95,
+                      rotateX: 0,
+                      rotateY: 0,
+                      transition: { duration: 0.1 }
+                    }}
+                    style={{
+                      transformStyle: "preserve-3d",
+                      transformOrigin: "center center -50px"
+                    }}
+                    className={`group relative px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300
+                      ${selectedCategory === category 
+                        ? 'bg-gradient-to-r from-blue-400 to-purple-600 text-white'
+                        : 'bg-white/5 text-gray-300 hover:bg-white/10'
+                      }
+                      [box-shadow:0_0_0_1px_#60a5fa40_inset] hover:[box-shadow:0_0_0_1px_#60a5fa_inset]
+                      hover:shadow-[0_0_30px_rgba(96,165,250,0.3)]`}
+                  >
+                    <div className="flex items-center gap-3 relative z-10">
+                      <motion.div
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <Icon className={`text-xl transition-transform duration-300
+                          ${selectedCategory === category ? 'text-white' : 'text-blue-400'}`} 
+                        />
+                      </motion.div>
+                      <span className="relative z-10">{category}</span>
+                    </div>
+                    {selectedCategory === category && (
+                      <motion.div
+                        layoutId="activeCategory"
+                        className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-400/20 to-purple-600/20 -z-10"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    {/* 3D Glow Effect */}
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-400/10 to-purple-600/10 
+                      blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-20" />
+                  </motion.button>
+                );
+              })}
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allProjects.map((project, index) => (
+            {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -59,10 +182,12 @@ const Projects = () => {
                           hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60]"
               >
                 <div className="relative h-48 w-full overflow-hidden">
-                  <img
-                    src={project.image}
+                  <Image
+                    src={`/${project.image}`}
                     alt={project.title}
-                    className="object-cover w-full h-full"
+                    fill
+                    className="object-cover"
+                    priority={index < 3}
                   />
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-600/50 to-purple-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="flex gap-4">
@@ -110,16 +235,16 @@ const Projects = () => {
                     </div>
                   </div>
                   <div className="flex justify-end">
-                      <Link
-                        href={`/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-400 to-purple-600 text-white rounded-full 
-                                hover:from-blue-500 hover:to-purple-700 transition-all duration-300 text-sm
-                                [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_20px_1px_#60a5fa40]
-                                hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_20px_2px_#60a5fa60]"
-                      >
-                        See More
-                        <FaExternalLinkAlt className="ml-2 text-sm" />
-                      </Link>
+                    <Link
+                      href={`/projects/${encodeURIComponent(project.title.toLowerCase().replace(/\s+/g, '-'))}`}
+                      className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-400 to-purple-600 text-white rounded-full 
+                              hover:from-blue-500 hover:to-purple-700 transition-all duration-300 text-sm
+                              [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_20px_1px_#60a5fa40]
+                              hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_20px_2px_#60a5fa60]"
+                    >
+                      See More
+                      <FaExternalLinkAlt className="ml-2 text-sm" />
+                    </Link>
                   </div>
                 </div>
               </motion.div>

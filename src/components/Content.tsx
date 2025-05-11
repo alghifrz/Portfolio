@@ -1,5 +1,5 @@
 import React from 'react';
-import AboutMe from './Profile';
+import Profile from './Profile';
 import Experience from './Experience';
 import Activities from './Activities';
 import FeaturedProjects from './FeaturedProjects';
@@ -23,7 +23,7 @@ const Content = () => {
                 <div className="z-0 absolute bottom-[10%] left-[8%] w-48 h-48 bg-green-300 opacity-20 rounded-full blur-3xl animate-float-wild5"></div>
                 <div className="z-0 absolute top-[45%] left-[50%] w-56 h-56 bg-red-300 opacity-25 rounded-full blur-3xl animate-float-wild1"></div>
                 <div className="z-0 absolute bottom-[40%] right-[40%] w-44 h-44 bg-rose-400 opacity-30 rounded-full blur-3xl animate-float-wild9"></div>
-                <AboutMe />
+                <Profile />
                 <Experience />
                 <Activities />
                 

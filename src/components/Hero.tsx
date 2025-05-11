@@ -8,7 +8,7 @@ const Hero = () => {
     return (
         <>
             {/* <section className="bg-gradient-to-r from-[#0f172a] to-[#1e3a8a] text-white min-h-screen flex items-center"> */}
-            <section className="min-h-screen flex items-center relative overflow-hidden bg-transparant">
+            <section id="home" className="min-h-screen flex items-center relative overflow-hidden bg-transparant">
                 <div className="max-w-7xl mx-auto px-6 py-16 flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-30 relative z-10">
                     
                     {/* Text Content */}
@@ -35,16 +35,16 @@ const Hero = () => {
                         </p>
 
                         <div className="mt-4 flex flex-wrap gap-4">
-                            <Link href={hero.buttons.cv.link} target='_blank'>
+                            <a href={hero.buttons.cv.link} target='_blank' rel="noopener noreferrer">
                                 <button className="cursor-pointer px-6 py-3 border-2 font-semibold border-blue-400 bg-blue-400 rounded-full text-white hover:bg-blue-500 transition shadow-lg hover:shadow-xl">
                                     {hero.buttons.cv.text}
                                 </button>
-                            </Link>
-                            <Link href={hero.buttons.portfolio.link} target='_blank'>
+                            </a>
+                            <a href={hero.buttons.portfolio.link} target='_blank' rel="noopener noreferrer">
                                 <button className="cursor-pointer px-6 py-3 bg-transparant border-2 border-blue-400 text-blue-400 font-semibold rounded-full hover:bg-gray-100 transition shadow-lg hover:shadow-xl">
                                     {hero.buttons.portfolio.text}
                                 </button>
-                            </Link>
+                            </a>
                         </div>
 
                         {/* Social Media */}

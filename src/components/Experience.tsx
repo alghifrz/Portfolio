@@ -87,7 +87,7 @@ export default function Roadmap() {
   const circleGradientId = "circleGradient";
 
   return (
-    <div className="px-2 md:px-8 mt-24 md:mt-48">
+    <section id="experience" className="px-2 md:px-8 mt-24 md:mt-48 md:pt-24">
       <div className='mb-4 md:mb-20'>
         <h1 className="text-3xl md:text-5xl font-bold mb-2 md:mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
           {content.experience.title}
@@ -475,6 +475,6 @@ export default function Roadmap() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
