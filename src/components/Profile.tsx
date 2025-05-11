@@ -46,7 +46,7 @@ const Profile = () => {
               &lt;
             </motion.button>
 
-            <div className="relative w-[280px] h-[180px] md:w-[600px] md:h-[400px] flex flex-col items-center justify-center mt-4 md:mt-0">
+            <div className="relative w-[200px] h-[150px] md:w-[600px] md:h-[400px] flex flex-col items-center justify-center mt-4 md:mt-0">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current}
@@ -61,7 +61,7 @@ const Profile = () => {
                     alt={`Photo ${current + 1}`}
                     fill
                     className="shadow-2xl object-cover rounded-xl md:rounded-2xl transition-all duration-300"
-                    sizes="(max-width: 768px) 280px, (max-width: 1200px) 600px, 33vw"
+                    sizes="(max-width: 768px) 200px, (max-width: 1200px) 600px, 33vw"
                     priority
                   />
                 </motion.div>

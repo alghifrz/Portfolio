@@ -23,16 +23,16 @@ export default function Roadmap() {
   }, []);
 
   // SVG dimensions
-  const svgWidth = isMobile ? 360 : 1200;
-  const svgHeight = isMobile ? 600 : 700;
+  const svgWidth = isMobile ? 320 : 1200;
+  const svgHeight = isMobile ? 500 : 700;
   const margin = isMobile 
-    ? { x: 30, y: 60 } 
+    ? { x: 20, y: 40 } 
     : { x: 0, y: 200 };
 
   const pathPoints = React.useMemo(() => {
     if (isMobile) {
       // Vertical layout for mobile
-      const verticalSpacing = 100;
+      const verticalSpacing = 80;
       
       return steps.map((_, index) => ({
         x: svgWidth / 2,
@@ -237,18 +237,18 @@ export default function Roadmap() {
           {pathPoints.map((pt, i) => {
             const isActive = progress >= i;
             const isCurrent = progress === i;
-            const nodeSize = isMobile ? 20 : 48;
-            const fontSize = isMobile ? 12 : 40;
-            const labelFontSize = isMobile ? 10 : 24;
-            const dateFontSize = isMobile ? 9 : 20;
-            const companyFontSize = isMobile ? 9 : 20;
+            const nodeSize = isMobile ? 16 : 48;
+            const fontSize = isMobile ? 10 : 40;
+            const labelFontSize = isMobile ? 8 : 24;
+            const dateFontSize = isMobile ? 7 : 20;
+            const companyFontSize = isMobile ? 7 : 20;
 
             const isEven = i % 2 === 0;
-            const textOffset = isMobile ? (isEven ? 38 : -38) : 0;
+            const textOffset = isMobile ? (isEven ? 30 : -30) : 0;
             const textX = isMobile ? pt.x + textOffset : pt.x;
             
             const dateY = isMobile 
-              ? pt.y - 20
+              ? pt.y - 16
               : pt.y + (i < 3 ? -145 : 90);
             
             const textY = isMobile 
@@ -256,7 +256,7 @@ export default function Roadmap() {
               : pt.y + (i < 3 ? -110 : 125);
             
             const companyY = isMobile 
-              ? pt.y + 30  // Increased the distance from title
+              ? pt.y + 20
               : pt.y + (i < 3 ? -80 : 155);
             
             const textAnchorMobile = isMobile
@@ -472,7 +472,7 @@ export default function Roadmap() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-2 md:mt-4 p-4 md:p-6 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-400 [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40] hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60] transition-all duration-300 text-center w-full md:w-5xl md:h-115 text-base md:text-lg"
+            className="mt-2 md:mt-4 p-2 md:p-6 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-400 [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40] hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60] transition-all duration-300 text-center w-full md:w-5xl md:h-115 text-base md:text-lg"
           >
             <div className='flex justify-between'>
               <div className='align-text-top justify-items-start'>
@@ -481,7 +481,7 @@ export default function Roadmap() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4 }}
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold justify-items-start justify-start text-[10px] md:text-xl"
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold justify-items-start justify-start text-[8px] md:text-xl"
                 >
                   {steps[progress].title}
                 </motion.p>
@@ -490,7 +490,7 @@ export default function Roadmap() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.1 }}
-                  className="text-white text-[10px] md:text-base italic justify-items-start"
+                  className="text-white text-[8px] md:text-base italic justify-items-start"
                 >
                   {steps[progress].company}
                 </motion.p>
@@ -500,7 +500,7 @@ export default function Roadmap() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2 }}
-                className="justify-items-end align-text-top text-blue-400 md:text-xl text-[10px] font-bold"
+                className="justify-items-end align-text-top text-blue-400 md:text-xl text-[8px] font-bold"
               >
                 {steps[progress].date}
               </motion.p>
@@ -522,7 +522,7 @@ export default function Roadmap() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="list-disc pl-5 text-[9px] md:text-lg"
+                  className="list-disc pl-5 text-[7px] md:text-lg"
                 >
                   {steps[progress].description.map((desc, index) => (
                     <motion.li 
@@ -532,7 +532,7 @@ export default function Roadmap() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
                     >
-                      <p className="text-white text-[9px] md:text-lg justify-items-start text-left">
+                      <p className="text-white text-[7px] md:text-lg justify-items-start text-left">
                         {desc}
                       </p>
                     </motion.li>
@@ -573,7 +573,7 @@ export default function Roadmap() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
-                    <p className="text-blue-200 text-[10px] md:text-sm bg-blue-400/20 px-3 py-1 rounded-full border border-blue-400 inline-block hover:bg-blue-400/30 transition-all duration-300">
+                    <p className="text-blue-200 text-[8px] md:text-sm bg-blue-400/20 px-2 py-0.5 md:px-3 md:py-1 rounded-full border border-blue-400 inline-block hover:bg-blue-400/30 transition-all duration-300">
                       {desc}
                     </p>
                   </motion.li>
