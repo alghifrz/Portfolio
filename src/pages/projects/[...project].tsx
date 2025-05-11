@@ -27,9 +27,7 @@ const ProjectDetail = () => {
       const loadPreviewImages = async () => {
         try {
           const response = await fetch(`/api/preview-images?project=${currentProject.preview}`);
-          const data = await response.json();
-          // Hapus bagian ini karena tidak digunakan lagi
-          // setPreviewImages(data.images);
+          await response.json(); // Just check if the response is valid
         } catch (error) {
           console.error('Error loading preview images:', error);
         }
@@ -490,10 +488,13 @@ const ProjectDetail = () => {
             >
               <div className="relative rounded-xl overflow-hidden
                             [box-shadow:0_0_0_1px_#60a5fa40_inset]">
-                <img
+                <Image
                   src={`/previews/${currentProject.preview}/${encodeURIComponent(selectedImage)}`}
                   alt="Selected Preview"
                   className="w-full h-auto"
+                  width={1920}
+                  height={1080}
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 

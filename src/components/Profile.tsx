@@ -1,15 +1,15 @@
 import content from '@/data/content.json';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Profile = () => {
   const photos = Array.from({ length: 11 }, (_, i) => `/me${i + 1}.jpg`);
   const [current, setCurrent] = useState(0);
 
-  const nextPhoto = () => {
+  const nextPhoto = useCallback(() => {
     setCurrent((prev) => (prev + 1) % photos.length);
-  };
+  }, [photos.length]);
 
   const prevPhoto = () => {
     setCurrent((prev) => (prev - 1 + photos.length) % photos.length);
@@ -22,7 +22,7 @@ const Profile = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [nextPhoto]);
 
   return (
     <section id="profile" className="relative py-5 z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-start items-center gap-0 md:gap-20 md:py-32">
