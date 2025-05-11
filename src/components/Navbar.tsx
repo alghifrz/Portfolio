@@ -29,37 +29,61 @@ const Navbar = () =>  {
         }
     }
 
-    // Memoize the scroll handler
+    // Simple scroll handler
     const handleScroll = useCallback(throttle(() => {
-        const scrollPosition = window.scrollY + 100;
+        // Don't check on projects page
+        if (router.pathname.startsWith('/projects')) return;
+
+        const scrollPosition = window.scrollY;
+        const headerOffset = 80; // Height of the navbar
 
         // Reset active section if at the top
-        if (scrollPosition < 100) {
+        if (scrollPosition < headerOffset) {
             setActiveSection('');
+            window.history.replaceState(null, '', window.location.pathname);
             return;
         }
 
-        // Find the closest section
+        // Get all sections
         const sections = content.navbar.menuItems
-            .filter((item: NavItem) => item.href.startsWith('#'))
+            .filter((item: NavItem) => item.href.startsWith('/#'))
             .map((item: NavItem) => {
-                const element = document.getElementById(item.href.replace('#', ''));
-                if (!element) return null;
+                const sectionId = item.href.replace('/#', '');
+                const element = document.getElementById(sectionId);
+                if (!element) {
+                    console.warn(`Section with id "${sectionId}" not found`);
+                    return null;
+                }
                 const rect = element.getBoundingClientRect();
-                const distance = Math.abs(rect.top);
-                return { id: item.href, distance };
+                return {
+                    id: sectionId,
+                    element,
+                    top: rect.top + window.pageYOffset - headerOffset,
+                    bottom: rect.bottom + window.pageYOffset - headerOffset
+                };
             })
             .filter(Boolean);
 
-        if (sections.length > 0) {
-            const closest = sections.reduce((prev: any, curr: any) => 
-                prev.distance < curr.distance ? prev : curr
-            );
-            if (closest) {
-                setActiveSection(closest.id);
+        // Find the current section
+        let currentSection = '';
+        for (let i = sections.length - 1; i >= 0; i--) {
+            const section = sections[i];
+            if (section && scrollPosition >= section.top && scrollPosition < section.bottom) {
+                currentSection = section.id;
+                break;
             }
         }
-    }, 50), []);
+
+        if (currentSection !== activeSection) {
+            setActiveSection(currentSection);
+            // Update URL hash without scroll
+            if (currentSection) {
+                window.history.replaceState(null, '', `/#${currentSection}`);
+            } else {
+                window.history.replaceState(null, '', window.location.pathname);
+            }
+        }
+    }, 100), [activeSection, router.pathname]);
 
     useEffect(() => {
         setMounted(true)
@@ -70,7 +94,7 @@ const Navbar = () =>  {
             setActiveSection(sectionId);
         }
 
-        // Add scroll event listener to update active section
+        // Add scroll event listener
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, [handleScroll])
@@ -109,9 +133,9 @@ const Navbar = () =>  {
             return router.pathname === path && !activeSection;
         }
         
-        // For projects page
+        // For projects page and its sub-pages
         if (path === '/projects') {
-            return router.pathname === path;
+            return router.pathname.startsWith('/projects');
         }
 
         // For section links
@@ -127,16 +151,16 @@ const Navbar = () =>  {
         setIsOpen(false);
         
         // If we're on the projects page, navigate to home with hash
-        if (router.pathname === '/projects') {
+        if (router.pathname.startsWith('/projects')) {
             setActiveSection(sectionId);
             await router.push(`/#${sectionId}`);
-            // Add a small delay to ensure the page is loaded
-            await new Promise(resolve => setTimeout(resolve, 100));
+            // Add a longer delay to ensure the page is loaded
+            await new Promise(resolve => setTimeout(resolve, 300));
             const element = document.getElementById(sectionId);
             if (element) {
                 const headerOffset = 80;
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                const rect = element.getBoundingClientRect();
+                const offsetPosition = rect.top + window.pageYOffset - headerOffset;
 
                 window.scrollTo({
                     top: offsetPosition,
@@ -148,8 +172,8 @@ const Navbar = () =>  {
             const element = document.getElementById(sectionId);
             if (element) {
                 const headerOffset = 80;
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                const rect = element.getBoundingClientRect();
+                const offsetPosition = rect.top + window.pageYOffset - headerOffset;
 
                 // Update URL hash without triggering scroll
                 window.history.pushState(null, '', `#${sectionId}`);
@@ -185,15 +209,167 @@ const Navbar = () =>  {
         setIsOpen(false);
         
         if (item.href === '/projects') {
+            // Set active section first to trigger the indicator animation
             setActiveSection('');
-            await router.push('/projects');
+            // Use router.push with shallow to prevent full page reload
+            await router.push('/projects', undefined, { shallow: true });
         } else if (item.href === '/') {
             setActiveSection('');
             await router.push('/');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
+            // Handle hash-based navigation
             const sectionId = item.href.replace('/#', '');
-            handleSectionClick(sectionId);
+            
+            // If we're on any projects page, navigate to home with hash
+            if (router.pathname.startsWith('/projects')) {
+                setActiveSection(sectionId);
+                await router.push(`/#${sectionId}`);
+                // Add a small delay to ensure the page is loaded
+                await new Promise(resolve => setTimeout(resolve, 100));
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    const headerOffset = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    // Smooth scroll with custom animation
+                    const startPosition = window.pageYOffset;
+                    const distance = offsetPosition - startPosition;
+                    const duration = 800; // 0.8 seconds
+                    let start: number | null = null;
+
+                    function easeInOutCubic(t: number): number {
+                        return t < 0.5
+                            ? 4 * t * t * t
+                            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                    }
+
+                    function animation(currentTime: number) {
+                        if (start === null) start = currentTime;
+                        const timeElapsed = currentTime - start;
+                        const progress = Math.min(timeElapsed / duration, 1);
+                        
+                        // Apply easing function
+                        const ease = easeInOutCubic(progress);
+                        
+                        // Scroll to the calculated position
+                        window.scrollTo(0, startPosition + distance * ease);
+
+                        // Update URL hash based on current scroll position
+                        const currentScroll = startPosition + distance * ease;
+                        const sections = content.navbar.menuItems
+                            .filter((item: NavItem) => item.href.startsWith('/#'))
+                            .map((item: NavItem) => {
+                                const id = item.href.replace('/#', '');
+                                const el = document.getElementById(id);
+                                if (!el) return null;
+                                const rect = el.getBoundingClientRect();
+                                return {
+                                    id,
+                                    top: rect.top + window.pageYOffset - headerOffset,
+                                    bottom: rect.bottom + window.pageYOffset - headerOffset
+                                };
+                            })
+                            .filter(Boolean);
+
+                        // Find the current section based on scroll position
+                        let currentSection = '';
+                        for (const section of sections) {
+                            if (section && currentScroll >= section.top && currentScroll < section.bottom) {
+                                currentSection = section.id;
+                                break;
+                            }
+                        }
+
+                        // Update URL hash if section changed
+                        if (currentSection && currentSection !== activeSection) {
+                            window.history.replaceState(null, '', `/#${currentSection}`);
+                            setActiveSection(currentSection);
+                        }
+
+                        // Continue animation if not complete
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        }
+                    }
+
+                    // Start the animation
+                    requestAnimationFrame(animation);
+                }
+            } else {
+                // Normal navigation within the home page
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    const headerOffset = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    // Smooth scroll with custom animation
+                    const startPosition = window.pageYOffset;
+                    const distance = offsetPosition - startPosition;
+                    const duration = 800; // 0.8 seconds
+                    let start: number | null = null;
+
+                    function easeInOutCubic(t: number): number {
+                        return t < 0.5
+                            ? 4 * t * t * t
+                            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                    }
+
+                    function animation(currentTime: number) {
+                        if (start === null) start = currentTime;
+                        const timeElapsed = currentTime - start;
+                        const progress = Math.min(timeElapsed / duration, 1);
+                        
+                        // Apply easing function
+                        const ease = easeInOutCubic(progress);
+                        
+                        // Scroll to the calculated position
+                        window.scrollTo(0, startPosition + distance * ease);
+
+                        // Update URL hash based on current scroll position
+                        const currentScroll = startPosition + distance * ease;
+                        const sections = content.navbar.menuItems
+                            .filter((item: NavItem) => item.href.startsWith('/#'))
+                            .map((item: NavItem) => {
+                                const id = item.href.replace('/#', '');
+                                const el = document.getElementById(id);
+                                if (!el) return null;
+                                const rect = el.getBoundingClientRect();
+                                return {
+                                    id,
+                                    top: rect.top + window.pageYOffset - headerOffset,
+                                    bottom: rect.bottom + window.pageYOffset - headerOffset
+                                };
+                            })
+                            .filter(Boolean);
+
+                        // Find the current section based on scroll position
+                        let currentSection = '';
+                        for (const section of sections) {
+                            if (section && currentScroll >= section.top && currentScroll < section.bottom) {
+                                currentSection = section.id;
+                                break;
+                            }
+                        }
+
+                        // Update URL hash if section changed
+                        if (currentSection && currentSection !== activeSection) {
+                            window.history.replaceState(null, '', `/#${currentSection}`);
+                            setActiveSection(currentSection);
+                        }
+
+                        // Continue animation if not complete
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        }
+                    }
+
+                    // Start the animation
+                    requestAnimationFrame(animation);
+                }
+            }
         }
     }
 
@@ -241,7 +417,11 @@ const Navbar = () =>  {
                                                 initial={{ opacity: 0 }}
                                                 animate={{ opacity: 1 }}
                                                 exit={{ opacity: 0 }}
-                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                                transition={{ 
+                                                    // type: "tween",
+                                                    // duration: 0.3,
+                                                    // ease: "easeInOut"
+                                                }}
                                             />
                                         )}
                                     </AnimatePresence>

@@ -200,7 +200,7 @@
       },
       {
         "name": "SMAN Agam Cendekia",
-        "degree": "Science, GPA 9.0/10",
+        "degree": "Math Science",
         "date": "2019 - 2022",
         "logo": "LogoSMANAC.png"
       }
@@ -309,7 +309,7 @@
         "demo": "",
         "cat": "Web Development",
         "featured": true,
-        "preview": "portfolio"
+        "preview": "Portfolio"
       },
       {
         "title": "DigitalExposome - Mental Wellbeing Classification",

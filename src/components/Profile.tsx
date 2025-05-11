@@ -29,22 +29,30 @@ const Profile = () => {
       {/* Decorative blurred circles */}
       <div className="relative py-5 z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-start items-center gap-0 md:gap-20">
         {/* Foto Slider */}
-        <div className="order-2 md:order-1 w-full md:w-1/2 flex flex-col items-center">
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="order-2 md:order-1 w-full md:w-1/2 flex flex-col items-center"
+        >
           <div className="flex gap-3 md:gap-5 items-center justify-center w-full">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               onClick={prevPhoto}
               className="flex bg-blue-400/30 hover:bg-gradient-to-r from-blue-400 to-purple-600 text-xl md:text-2xl rounded-full p-1.5 md:p-2 transition-all"
             >
               &lt;
-            </button>
+            </motion.button>
 
             <div className="relative w-[280px] h-[180px] md:w-[600px] md:h-[400px] flex flex-col items-center justify-center mt-4 md:mt-0">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 1.05 }}
                   transition={{ duration: 0.5 }}
                   className="absolute w-full h-full"
                 >
@@ -60,25 +68,53 @@ const Profile = () => {
               </AnimatePresence>
             </div>
 
-            <button
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               onClick={nextPhoto}
               className="flex bg-blue-400/30 hover:bg-gradient-to-r from-blue-400 to-purple-600 text-xl md:text-2xl rounded-full p-1.5 md:p-2 transition-all"
             >
               &gt;
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
         {/* Teks */}
-        <div className="order-1 md:order-2 w-full md:w-1/2 text-center md:text-left md:items-start mt-4 md:mt-0 px-4 md:px-0">
-          <h2 className="text-2xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold mb-3 md:mb-4 pb-3 md:pb-5 border-b border-white">{content.about.about}</h2>
-          <p className="text-sm md:text-xl leading-relaxed">
+        <motion.div 
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="order-1 md:order-2 w-full md:w-1/2 text-center md:text-left md:items-start mt-4 md:mt-0 px-4 md:px-0"
+        >
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-2xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold mb-3 md:mb-4 pb-3 md:pb-5 border-b border-white"
+          >
+            {content.about.about}
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-sm md:text-xl leading-relaxed"
+          >
             {content.about.detail}
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </div>
 
       {/* Decorative wave transition */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="absolute bottom-0 left-0 w-full overflow-hidden leading-none"
+      >
         <svg
           className="relative block w-full h-[50px] md:h-[100px]"
           data-name="Layer 1"
@@ -91,14 +127,23 @@ const Profile = () => {
             className="fill-black"
           ></path>
         </svg>
-      </div>
+      </motion.div>
 
       {/* Floating particles */}
       <div className="absolute bottom-0 left-0 w-full h-[50px] md:h-[100px] overflow-hidden">
         {[...Array(20)].map((_, i) => (
-          <div
+          <motion.div
             key={i}
-            className="absolute w-1.5 md:w-2 h-1.5 md:h-2 bg-blue-400/30 rounded-full animate-float"
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ 
+              duration: 0.5,
+              delay: i * 0.1,
+              repeat: Infinity,
+              repeatType: "reverse"
+            }}
+            className="absolute w-1.5 md:w-2 h-1.5 md:h-2 bg-blue-400/30 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               bottom: `${Math.random() * 100}%`,

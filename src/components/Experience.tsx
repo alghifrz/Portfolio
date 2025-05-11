@@ -88,14 +88,40 @@ export default function Roadmap() {
 
   return (
     <section id="experience" className="px-2 md:px-8 mt-24 md:mt-48 md:pt-24">
-      <div className='mb-4 md:mb-20'>
-        <h1 className="text-3xl md:text-5xl font-bold mb-2 md:mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className='mb-4 md:mb-20'
+      >
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-3xl md:text-5xl font-bold mb-2 md:mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600"
+        >
           {content.experience.title}
-        </h1>
-        <p className="text-white mb-4 md:mb-6 text-center text-xs md:text-2xl">{content.experience.subtitle}</p>
-      </div>
+        </motion.h1>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-white mb-4 md:mb-6 text-center text-xs md:text-2xl"
+        >
+          {content.experience.subtitle}
+        </motion.p>
+      </motion.div>
 
-      <div className="relative mb-12 pb-0 md:mb-2 overflow-x-hidden">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="relative mb-12 pb-0 md:mb-2 overflow-x-hidden"
+      >
         <svg width={svgWidth} height={svgHeight} className="mx-auto" style={{ overflow: 'visible' }}>
           <defs>
             <linearGradient id={gradientId}>
@@ -413,68 +439,152 @@ export default function Roadmap() {
             );
           })}
         </svg>
-      </div>
+      </motion.div>
 
-      <div className="flex flex-col items-center gap-4 md:gap-8">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="flex flex-col items-center gap-4 md:gap-8"
+      >
         <div className="flex gap-3 md:gap-6">
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleBack}
             disabled={progress === 0}
             className="z-10 cursor-pointer flex items-center gap-2 md:gap-3 bg-white/10 backdrop-blur-xl hover:bg-white/20 text-white font-medium px-4 md:px-4 py-2 md:py-2 text-sm md:text-lg rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 border border-blue-400 shadow-[0px_0px_8px_1px_rgba(59,130,246,0.3)]"
           >
-           <span className={isMobile ? 'text-md' : 'text-xl'}>{'<'}</span> Prev
-          </button>
-          <button
+            <span className={isMobile ? 'text-md' : 'text-xl'}>{'<'}</span> Prev
+          </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleNext}
             disabled={progress === steps.length-1}
             className="z-10 cursor-pointer flex items-center gap-2 md:gap-3 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 hover:from-blue-600 hover:via-indigo-600 hover:to-purple-600 text-white font-medium px-4 md:px-4 py-2 md:py-2 text-sm md:text-lg rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 shadow-[0px_0px_8px_1px_rgba(59,130,246,0.3)]"
           >
             Next <span className={isMobile ? 'text-md' : 'text-xl'}>{'>'}</span>
-          </button>
+          </motion.button>
         </div>
         <div className='flex flex-col md:flex-row justify-between gap-1 md:gap-8 z-10'>
-          <div className="mt-2 md:mt-4 p-4 md:p-6 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-400 [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40] hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60] transition-all duration-300 text-center w-full md:w-5xl md:h-115 text-base md:text-lg">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-2 md:mt-4 p-4 md:p-6 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-400 [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40] hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60] transition-all duration-300 text-center w-full md:w-5xl md:h-115 text-base md:text-lg"
+          >
             <div className='flex justify-between'>
               <div className='align-text-top justify-items-start'>
-                <p className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold justify-items-start justify-start text-[10px] md:text-xl">{steps[progress].title}</p>
-                <p className="text-white text-[10px] md:text-base italic justify-items-start">{steps[progress].company}</p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold justify-items-start justify-start text-[10px] md:text-xl"
+                >
+                  {steps[progress].title}
+                </motion.p>
+                <motion.p 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                  className="text-white text-[10px] md:text-base italic justify-items-start"
+                >
+                  {steps[progress].company}
+                </motion.p>
               </div>
-              <p className="justify-items-end align-text-top text-blue-400 md:text-xl text-[10px] font-bold">{steps[progress].date}</p>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="justify-items-end align-text-top text-blue-400 md:text-xl text-[10px] font-bold"
+              >
+                {steps[progress].date}
+              </motion.p>
             </div>
             <div className="mt-2 md:mt-4 justify-items-center">
               {steps[progress].description[0].includes('.png') ? (
-                <img src={steps[progress].description[0]} alt={'Sertifikat'} className="justify-center justify-items-center w-1/2 h-auto" />
+                <motion.img 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  src={steps[progress].description[0]} 
+                  alt={'Sertifikat'} 
+                  className="justify-center justify-items-center w-1/2 h-auto" 
+                />
               ) : (
-                <ul className="list-disc pl-5 text-[9px] md:text-lg">
+                <motion.ul 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="list-disc pl-5 text-[9px] md:text-lg"
+                >
                   {steps[progress].description.map((desc, index) => (
-                    <li key={index}>
+                    <motion.li 
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.1 }}
+                    >
                       <p className="text-white text-[9px] md:text-lg justify-items-start text-left">
                         {desc}
                       </p>
-                    </li>
+                    </motion.li>
                   ))}
-                </ul>
+                </motion.ul>
               )}
             </div>
-          </div>
-          <div className="md:w-sm mt-2 md:mt-4 p-4 md:p-6 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-400 [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40] hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60] transition-all duration-300 text-center w-full max-w-lg text-base md:text-lg flex flex-col">
-            <p className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-extrabold text-xs md:text-2xl mb-2">
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="md:w-sm mt-2 md:mt-4 p-4 md:p-6 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-400 [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40] hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60] transition-all duration-300 text-center w-full max-w-lg text-base md:text-lg flex flex-col"
+          >
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-extrabold text-xs md:text-2xl mb-2"
+            >
               {content.experience.key}
-            </p>
+            </motion.p>
             <div className="flex-1 flex items-center justify-center">
-              <ul className="flex flex-wrap gap-2 justify-center items-center">
+              <motion.ul 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-wrap gap-2 justify-center items-center"
+              >
                 {steps[progress].skill.map((desc, index) => (
-                  <li key={index}>
+                  <motion.li 
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                  >
                     <p className="text-blue-200 text-[10px] md:text-sm bg-blue-400/20 px-3 py-1 rounded-full border border-blue-400 inline-block hover:bg-blue-400/30 transition-all duration-300">
                       {desc}
                     </p>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
