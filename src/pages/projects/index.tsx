@@ -25,10 +25,20 @@ const Projects = () => {
   const router = useRouter();
   const { category } = router.query;
   
+  // Get unique categories
+  const categories = ['All', ...new Set(allProjects.map(project => project.cat))];
+
   // Initialize selectedCategory from URL query parameter or default to 'All'
   const [selectedCategory, setSelectedCategory] = useState(
     typeof category === 'string' ? category : 'All'
   );
+
+  // Check if category exists and redirect to 404 if not
+  useEffect(() => {
+    if (typeof category === 'string' && category !== 'All' && !categories.includes(category)) {
+      router.push('/404');
+    }
+  }, [category, categories, router]);
 
   // Update URL when category changes
   const handleCategoryChange = (newCategory: string) => {
@@ -39,9 +49,6 @@ const Projects = () => {
     }, undefined, { shallow: true });
   };
   
-  // Get unique categories
-  const categories = ['All', ...new Set(allProjects.map(project => project.cat))];
-
   // Category icons mapping with type safety
   const categoryIcons: Record<string, IconType> = {
     'All': FaAllergies,
@@ -191,14 +198,16 @@ const Projects = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-600/50 to-purple-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="flex gap-4">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors border border-blue-500/30 hover:border-blue-500/50"
-                      >
-                        <FaGithub className="text-blue-400 text-xl" />
-                      </a>
+                      {project.github && project.github !== '' && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors border border-blue-500/30 hover:border-blue-500/50"
+                        >
+                          <FaGithub className="text-blue-400 text-xl" />
+                        </a>
+                      )}
                       {project.demo && (
                         <a
                           href={project.demo}

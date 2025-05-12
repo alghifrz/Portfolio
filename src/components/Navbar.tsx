@@ -257,6 +257,83 @@ const Navbar = () =>  {
                     // Start the animation
                     requestAnimationFrame(animation);
                 }
+               
+            } else if (router.asPath.endsWith('=404notfound')) {
+                setActiveSection(sectionId);
+                await router.push(`/#${sectionId}`);
+                // Add a small delay to ensure the page is loaded
+                await new Promise(resolve => setTimeout(resolve, 100));
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    const headerOffset = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    // Smooth scroll with custom animation
+                    const startPosition = window.pageYOffset;
+                    const distance = offsetPosition - startPosition;
+                    const duration = 800; // 0.8 seconds
+                    let start: number | null = null;
+
+                    function easeInOutCubic(t: number): number {
+                        return t < 0.5
+                            ? 4 * t * t * t
+                            : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                    }
+
+                    function animation(currentTime: number) {
+                        if (start === null) start = currentTime;
+                        const timeElapsed = currentTime - start;
+                        const progress = Math.min(timeElapsed / duration, 1);
+                        
+                        // Apply easing function
+                        const ease = easeInOutCubic(progress);
+                        
+                        // Scroll to the calculated position
+                        window.scrollTo(0, startPosition + distance * ease);
+
+                        // Update URL hash based on current scroll position
+                        const currentScroll = startPosition + distance * ease;
+                        const sections = content.navbar.menuItems
+                            .filter((item: NavItem) => item.href.startsWith('/#'))
+                            .map((item: NavItem) => {
+                                const id = item.href.replace('/#', '');
+                                const el = document.getElementById(id);
+                                if (!el) return null;
+                                const rect = el.getBoundingClientRect();
+                                return {
+                                    id,
+                                    top: rect.top + window.pageYOffset - headerOffset,
+                                    bottom: rect.bottom + window.pageYOffset - headerOffset
+                                };
+                            })
+                            .filter(Boolean);
+
+                        // Find the current section based on scroll position
+                        let currentSection = '';
+                        for (const section of sections) {
+                            if (section && currentScroll >= section.top && currentScroll < section.bottom) {
+                                currentSection = section.id;
+                                break;
+                            }
+                        }
+
+                        // Update URL hash if section changed
+                        if (currentSection && currentSection !== activeSection) {
+                            window.history.replaceState(null, '', `/#${currentSection}`);
+                            setActiveSection(currentSection);
+                        }
+
+                        // Continue animation if not complete
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        }
+                    }
+
+                    // Start the animation
+                    requestAnimationFrame(animation);
+                }
+               
             } else {
                 // Normal navigation within the home page
                 const element = document.getElementById(sectionId);
@@ -330,6 +407,8 @@ const Navbar = () =>  {
                     requestAnimationFrame(animation);
                 }
             }
+
+            
         }
     }
 
