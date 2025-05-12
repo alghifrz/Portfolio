@@ -91,7 +91,7 @@ const Profile = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold mb-2 md:mb-3 pb-2 md:pb-4 border-b border-white"
+            className="text-2xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold mb-2 md:mb-3 pb-2 md:pb-4 border-b border-white"
           >
             {content.about.about}
           </motion.h2>
