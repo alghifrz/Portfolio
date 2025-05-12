@@ -2,8 +2,19 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Head from 'next/head';
 import { FaHome, FaArrowLeft } from 'react-icons/fa';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const NotFound = () => {
+  const router = useRouter();
+  const path = router.asPath;
+
+  useEffect(() => {
+    if (path === '/404' && !path.endsWith('=404notfound')) {
+      router.replace(`${path}=404notfound`);
+    }
+  }, [path, router]);
+
   return (
     <>
       <Head>
@@ -49,7 +60,7 @@ const NotFound = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-sm md:text-base text-gray-500 max-w-md mx-auto mb-8"
             >
-              The page you're looking for doesn't exist or has been moved.
+              The page you&rsquo;re looking for doesn&rsquo;t exist or has been moved.
             </motion.p>
           </motion.div>
 
