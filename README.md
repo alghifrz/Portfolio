@@ -1,40 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🌐 Portfolio Pribadi – alghifrz
 
-## Getting Started
+Selamat datang di repositori portofolio pribadi saya! Dibangun menggunakan **Next.js**, proyek ini dirancang untuk menampilkan informasi tentang saya, pengalaman, dan proyek-proyek yang telah saya kerjakan.
 
-First, run the development server:
+🔗 **Demo Langsung**: [alghif-portfolio.vercel.app](https://alghif-portfolio.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Teknologi yang Digunakan
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [ESLint](https://eslint.org/)
+- [PostCSS](https://postcss.org/)
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## 🛠️ Cara Menjalankan Proyek
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Kloning repositori ini**:
 
-## Learn More
+   ```bash
+   git clone https://github.com/alghifrz/Portfolio.git
+   cd Portfolio
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Instal dependensi**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+   ```bash
+   npm install
+   # atau
+   yarn install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Jalankan server pengembangan**:
 
-## Deploy on Vercel
+   ```bash
+   npm run dev
+   # atau
+   yarn dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Buka di browser**:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+   Kunjungi [http://localhost:3000](http://localhost:3000) untuk melihat hasilnya.
+
+---
+
+## 📁 Struktur Proyek
+
+- `src/`: Berisi komponen dan halaman utama.
+- `public/`: Menyimpan aset statis seperti gambar dan ikon.
+- `pages/`: Menyimpan rute dan API endpoints.
+- `next.config.ts`: Konfigurasi khusus untuk Next.js.
+- `postcss.config.mjs`: Konfigurasi untuk PostCSS.
+- `tsconfig.json`: Konfigurasi TypeScript.
+
+---
+
+## 📄 Lisensi
+
+Proyek ini dilisensikan di bawah lisensi [MIT](LICENSE).
+
+---
+
+## 🙋‍♂️ Tentang Saya
+
+Saya adalah seorang pengembang web yang berfokus pada pengembangan frontend dengan pengalaman dalam membangun aplikasi web responsif dan interaktif. Portofolio ini mencerminkan beberapa proyek dan keterampilan yang telah saya kembangkan.
+
+---
+
+Terima kasih telah mengunjungi portofolio saya! Jika Anda memiliki pertanyaan atau ingin berkolaborasi, jangan ragu untuk menghubungi saya.
