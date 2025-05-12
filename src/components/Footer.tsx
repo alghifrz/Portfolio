@@ -78,7 +78,7 @@ export default function Footer() {
                   whileHover={{ x: 5 }}
                 >
                   <a
-                    href={`#${item.toLowerCase()}`}
+                    href={`/#${item.toLowerCase()}`}
                     className="text-gray-300 hover:text-blue-400 transition-colors inline-block text-sm tracking-wide uppercase"
                   >
                     {item}
