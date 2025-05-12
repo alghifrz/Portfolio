@@ -16,7 +16,7 @@ import {
   FaAllergies
 } from 'react-icons/fa';
 import { IconType } from 'react-icons';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 const Projects = () => {
   const { meta, projects } = content;
@@ -25,8 +25,10 @@ const Projects = () => {
   const router = useRouter();
   const { category } = router.query;
   
-  // Get unique categories
-  const categories = ['All', ...new Set(allProjects.map(project => project.cat))];
+  // Get unique categories with useMemo
+  const categories = useMemo(() => {
+    return ['All', ...new Set(allProjects.map(project => project.cat))];
+  }, [allProjects]);
 
   // Initialize selectedCategory from URL query parameter or default to 'All'
   const [selectedCategory, setSelectedCategory] = useState(
