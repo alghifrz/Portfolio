@@ -32,23 +32,23 @@ const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
   }
 
   return (
-    <section className="py-20 mt-24 md:mt-48">
+    <section className="px-4 md:px-8 my-24 pt-12">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-12"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-2 md:mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+          <h2 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
             Featured Projects
           </h2>
-          <p className="text-white mb-4 md:mb-6 text-center text-xs md:text-2xl">
+          <p className="text-white mb-4 md:mb-6 text-center text-xs md:text-lg">
             A showcase of my best work and technical expertise
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -92,20 +92,20 @@ const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
                 </div>
               </div>
 
-              <div className="flex flex-col justify-between min-h-[24rem] p-6">
+              <div className="flex flex-col justify-between min-h-[20rem] md:min-h-[24rem] p-6">
                 <div className="">
-                  <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-400 to-purple-600 text-white text-sm font-medium rounded-full mb-3">
+                  <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-400 to-purple-600 text-white text-[10px] md:text-[12px] font-medium rounded-full mb-3">
                     {project.cat}
                   </span>
-                  <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-2">
+                  <h3 className="text-md md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <p className="text-gray-300 mb-4 md:text-sm line-clamp-4 text-xs">{project.description}</p>
+                  <div className="flex flex-wrap gap-1 md:gap-2 mb-4">
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-gradient-to-br from-gray-800/50 to-gray-900/50 text-gray-300 rounded-full text-sm
+                        className="px-3 py-1 bg-gradient-to-br from-gray-800/50 to-gray-900/50 text-gray-300 rounded-full text-[10px] md:text-sm
                                 [box-shadow:0_0_0_1px_#60a5fa40_inset] hover:[box-shadow:0_0_0_1px_#60a5fa_inset]"
                       >
                         {tech}
@@ -117,7 +117,7 @@ const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
                   <Link
                     href={`/projects/${encodeURIComponent(project.title.toLowerCase().replace(/\s+/g, '-'))}`}
                     className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-400 to-purple-600 text-white rounded-full 
-                            hover:from-blue-500 hover:to-purple-700 transition-all duration-300 text-sm
+                            hover:from-blue-500 hover:to-purple-700 transition-all duration-300 text-[12px] md:text-sm
                             [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_20px_1px_#60a5fa40]
                             hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_20px_2px_#60a5fa60]"
                   >

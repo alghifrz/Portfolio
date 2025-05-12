@@ -80,10 +80,10 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">
             Let&rsquo;s Connect
           </h2>
-          <p className="text-gray-700 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-700 text-xs md:text-sm max-w-2xl mx-auto">
             Have a project in mind or want to discuss potential opportunities? I&rsquo;d love to hear from you!
           </p>
         </motion.div>
@@ -104,9 +104,9 @@ export default function Contact() {
                       hover:shadow-[0_0_30px_rgba(96,165,250,0.3)] transition-all duration-300"
           >
             <div className="flex flex-row items-center justify-center gap-4">
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full flex items-center justify-center
+              <div className="w-8 h-8 md:w-16 md:h-16 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full flex items-center justify-center
                             group-hover:scale-110 transition-transform duration-300">
-                <FaEnvelope className="text-lg md:text-2xl text-white" />
+                <FaEnvelope className="text-sm md:text-2xl text-white" />
               </div>
               <div className="text-center">
                 <h3 className="text-sm md:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-1">
@@ -137,12 +137,12 @@ export default function Contact() {
                         hover:shadow-[0_0_30px_rgba(96,165,250,0.3)] transition-all duration-300"
             >
               <div className="flex flex-col items-center justify-center gap-2">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full flex items-center justify-center
+                <div className="w-8 h-8 md:w-16 md:h-16 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full flex items-center justify-center
                               group-hover:scale-110 transition-transform duration-300">
-                  <FaWhatsapp className="text-lg text-white" />
+                  <FaWhatsapp className="text-sm md:text-lg text-white" />
                 </div>
                 <div className="text-center">
-                  <h3 className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-1">
+                  <h3 className="text-sm md:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-1">
                     WhatsApp
                   </h3>
                   <p className="text-gray-700 text-[10px] leading-tight">
@@ -164,12 +164,12 @@ export default function Contact() {
                         hover:shadow-[0_0_30px_rgba(96,165,250,0.3)] transition-all duration-300"
             >
               <div className="flex flex-col items-center justify-center gap-2">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full flex items-center justify-center
+                <div className="w-8 h-8 md:w-16 md:h-16 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full flex items-center justify-center
                               group-hover:scale-110 transition-transform duration-300">
-                  <FaLinkedin className="text-lg text-white" />
+                  <FaLinkedin className="text-sm md:text-lg text-white" />
                 </div>
                 <div className="text-center">
-                  <h3 className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-1">
+                  <h3 className="text-sm md:text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-1">
                     Social Media
                   </h3>
                   <div className="flex gap-2 justify-center">
@@ -281,7 +281,7 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="Your Name"
                   required
-                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-200/20
+                  className="text-sm md:text-base w-full px-4 py-3 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-200/20
                             [box-shadow:0_0_0_1px_#60a5fa40_inset,0_0_20px_1px_#60a5fa20] 
                             focus:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40]
                             text-gray-700 placeholder-gray-500 focus:outline-none transition-all duration-300"
@@ -295,7 +295,7 @@ export default function Contact() {
                   onChange={handleChange}
                   placeholder="Your Email"
                   required
-                  className="w-full px-4 py-3 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-200/20
+                  className="text-sm md:text-base w-full px-4 py-3 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-200/20
                             [box-shadow:0_0_0_1px_#60a5fa40_inset,0_0_20px_1px_#60a5fa20] 
                             focus:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40]
                             text-gray-700 placeholder-gray-500 focus:outline-none transition-all duration-300"
@@ -310,7 +310,7 @@ export default function Contact() {
                 placeholder="Your Message"
                 required
                 rows={4}
-                className="w-full px-4 py-3 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-200/20
+                className="text-sm md:text-base w-full px-4 py-3 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-200/20
                           [box-shadow:0_0_0_1px_#60a5fa40_inset,0_0_20px_1px_#60a5fa20] 
                           focus:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40]
                           text-gray-700 placeholder-gray-500 focus:outline-none transition-all duration-300"
@@ -320,7 +320,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`px-8 py-4 bg-gradient-to-r from-blue-400 to-purple-600 text-white rounded-full 
+                className={`text-sm md:text-base px-8 py-4 bg-gradient-to-r from-blue-400 to-purple-600 text-white rounded-full 
                         hover:from-blue-500 hover:to-purple-700 transition-all duration-300 text-lg font-medium
                         [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_20px_1px_#60a5fa40]
                         hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_20px_2px_#60a5fa60]

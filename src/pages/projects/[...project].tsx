@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Head from "next/head";
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import Link from 'next/link';
 import content from '@/data/content.json';
@@ -92,7 +92,7 @@ const ProjectDetail = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <div className="relative md:py-10 py-2 px-6 bg-black backdrop-blur-3xl text-white overflow-hidden">
+      <div className="relative py-10 px-4 md:px-6 bg-black backdrop-blur-3xl text-white overflow-hidden">
         {/* Background Elements */}
         <div className="z-0 absolute bottom-20 right-10 w-64 h-64 bg-blue-500 opacity-40 rounded-full blur-3xl animate-float-wild4"></div>
         <div className="z-0 absolute top-1/4 right-1/3 w-72 h-72 bg-indigo-500 opacity-30 rounded-full blur-3xl animate-float-wild5"></div>
@@ -112,21 +112,21 @@ const ProjectDetail = () => {
         <div className="z-0 absolute bottom-[10%] left-[8%] w-48 h-48 bg-green-300 opacity-20 rounded-full blur-3xl animate-float-wild5"></div>
         <div className="z-0 absolute top-[45%] left-[50%] w-56 h-56 bg-red-300 opacity-25 rounded-full blur-3xl animate-float-wild1"></div>
 
-        <div className="container mx-auto px-4 py-20">
+        <div className="container mx-auto px-8 md:px-20 pb-40 py-8 md:py-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="max-w-6xl mx-auto"
+            className="max-w-[1217px] mx-auto"
           >
             {/* Back Button */}
             <Link
               href="/projects"
-              className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full 
-                       hover:bg-white/20 transition-all duration-300 text-sm text-gray-300
-                       border border-blue-500/30 hover:border-blue-500/50 mb-8"
+              className="inline-flex items-center px-2.5 py-1 md:px-4 md:py-2 bg-white/10 backdrop-blur-sm rounded-full 
+                       hover:bg-white/20 transition-all duration-300 text-[10px] md:text-sm text-gray-300
+                       border border-blue-500/30 hover:border-blue-500/50 mb-4 md:mb-8"
             >
-              <FaArrowLeft className="mr-2" />
+              <FaArrowLeft className="mr-1.5 md:mr-2 text-[10px] md:text-sm" />
               Back to Projects
             </Link>
 
@@ -136,12 +136,12 @@ const ProjectDetail = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="relative bg-white/10 backdrop-blur-xl rounded-xl overflow-hidden mb-8
+              className="relative bg-white/10 backdrop-blur-xl rounded-xl overflow-hidden mb-4 md:mb-8
                         [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40]
                         hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60]
                         transition-all duration-300"
             >
-              <div className="relative h-50 md:h-96 w-full">
+              <div className="relative h-32 md:h-96 w-full">
                 <motion.img
                   initial={{ scale: 1.1 }}
                   whileInView={{ scale: 1 }}
@@ -149,7 +149,7 @@ const ProjectDetail = () => {
                   transition={{ duration: 0.7 }}
                   src={`/${currentProject.image}`}
                   alt={currentProject.title}
-                  className="object-cover md:w-full md:h-full"
+                  className="object-cover w-full h-full"
                 />
               </div>
               <motion.div 
@@ -157,7 +157,7 @@ const ProjectDetail = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="absolute bottom-0 left-0 right-0 md:p-6 p-3 flex flex-col justify-between md:min-h-[200px] bg-black/60 backdrop-blur-md"
+                className="absolute bottom-0 left-0 right-0 p-3 md:p-6 flex flex-col justify-between md:min-h-[180px] bg-black/60 backdrop-blur-md"
               >
                 <div>
                   <motion.span 
@@ -165,7 +165,7 @@ const ProjectDetail = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4 }}
-                    className="inline-block px-3 py-1 bg-gradient-to-r from-blue-400 to-purple-600 text-white md:text-sm text-[9px] font-medium rounded-full mb-3"
+                    className="inline-block px-2 py-0.5 md:px-3 md:py-1 bg-gradient-to-r from-blue-400 to-purple-600 text-white text-[8px] md:text-[12px] font-medium rounded-full mb-1.5 md:mb-3"
                   >
                     {currentProject.cat}
                   </motion.span>
@@ -174,7 +174,7 @@ const ProjectDetail = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.1 }}
-                    className="text-xs md:text-4xl font-bold text-white mb-2"
+                    className="text-sm md:text-3xl font-bold text-white mb-1 md:mb-2"
                   >
                     {currentProject.title}
                   </motion.h1>
@@ -183,7 +183,7 @@ const ProjectDetail = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.2 }}
-                    className="text-gray-200 text-[10px] md:text-lg"
+                    className="text-[10px] md:text-base text-gray-200 line-clamp-2 md:line-clamp-none"
                   >
                     {currentProject.description}
                   </motion.p>
@@ -192,21 +192,21 @@ const ProjectDetail = () => {
             </motion.div>
 
             {/* Project Content */}
-            <div className="flex flex-col md:flex-row gap-8 mb-8">
+            <div className="flex flex-col md:flex-row gap-3 md:gap-8 mb-4 md:mb-8">
               {/* Main Content */}
               <motion.div 
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-8 w-full"
+                className="space-y-3 md:space-y-8 w-full"
               >
                 <motion.div 
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-white/10 backdrop-blur-xl rounded-xl p-6 h-full
+                  className="bg-white/10 backdrop-blur-xl rounded-xl p-3 md:p-6 h-full
                             [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40]"
                 >
                   <motion.h2 
@@ -214,11 +214,11 @@ const ProjectDetail = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4 }}
-                    className="text-lg md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-4"
+                    className="text-sm md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-2 md:mb-4"
                   >
                     Technology Used
                   </motion.h2>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1 md:gap-2">
                     {currentProject.technologies.map((tech, index) => (
                       <motion.span
                         key={index}
@@ -226,7 +226,7 @@ const ProjectDetail = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.3, delay: index * 0.1 }}
-                        className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-300
+                        className="px-2 py-0.5 md:px-3 md:py-1 bg-white/10 rounded-full text-[8px] md:text-sm text-gray-300
                                  border border-blue-500/30 hover:border-blue-500/50
                                  transition-all duration-300"
                       >
@@ -242,14 +242,14 @@ const ProjectDetail = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="space-y-8 md:w-1/3 w-full"
+                className="space-y-3 md:space-y-8 md:w-1/3 w-full"
               >
                 <motion.div 
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
-                  className="bg-white/10 backdrop-blur-xl rounded-xl p-6 h-full
+                  className="bg-white/10 backdrop-blur-xl rounded-xl p-3 md:p-6 h-full
                             [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40]"
                 >
                   <motion.h2 
@@ -257,12 +257,12 @@ const ProjectDetail = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4 }}
-                    className="text-lg md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-4"
+                    className="text-sm md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 mb-2 md:mb-4"
                   >
                     Links
                   </motion.h2>
-                  <div className="space-y-4">
-                    {currentProject.github ? (
+                  <div className="space-y-2 md:space-y-4">
+                    {currentProject.github && (
                       <motion.a
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -273,25 +273,12 @@ const ProjectDetail = () => {
                         href={currentProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center px-4 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors
-                                 border border-blue-500/30 hover:border-blue-500/50 text-gray-300 text-xs md:text-sm"
+                        className="flex items-center px-2.5 py-1 md:px-4 md:py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors
+                                 border border-blue-500/30 hover:border-blue-500/50 text-gray-300 text-[8px] md:text-sm"
                       >
-                        <FaGithub className="text-blue-400 mr-2" />
+                        <FaGithub className="text-blue-400 mr-1.5 md:mr-2 text-[10px] md:text-sm" />
                         View on GitHub
                       </motion.a>
-                    ) : (
-                      <motion.button
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: 0.3 }}
-                        disabled
-                        className="flex items-center px-4 py-2 bg-white/5 rounded-lg cursor-not-allowed
-                                 border border-gray-500/30 text-gray-500 text-xs md:text-sm"
-                      >
-                        <FaGithub className="mr-2" />
-                        View on GitHub
-                      </motion.button>
                     )}
                     {currentProject.demo && (
                       <motion.a
@@ -304,10 +291,10 @@ const ProjectDetail = () => {
                         href={currentProject.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center px-4 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors
-                                 border border-blue-500/30 hover:border-blue-500/50 text-gray-300"
+                        className="flex items-center px-2.5 py-1 md:px-4 md:py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors
+                                 border border-blue-500/30 hover:border-blue-500/50 text-gray-300 text-[8px] md:text-sm"
                       >
-                        <FaExternalLinkAlt className="text-blue-400 mr-2" />
+                        <FaExternalLinkAlt className="text-blue-400 mr-1.5 md:mr-2 text-[10px] md:text-sm" />
                         Live Demo
                       </motion.a>
                     )}
@@ -323,23 +310,22 @@ const ProjectDetail = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
-                className=""
               >
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="bg-white/10 backdrop-blur-xl rounded-xl p-6
+                  className="bg-white/10 backdrop-blur-xl rounded-xl p-3 md:p-6
                             [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40]"
                 >
-                  <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center justify-between mb-3 md:mb-6">
                     <motion.h2 
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4 }}
-                      className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600"
+                      className="text-sm md:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600"
                     >
                       Project Preview
                     </motion.h2>
@@ -348,29 +334,29 @@ const ProjectDetail = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4 }}
-                      className="flex items-center gap-4"
+                      className="flex items-center gap-2 md:gap-4"
                     >
-                      <span className="text-sm text-gray-400">
+                      <span className="text-[8px] md:text-sm text-gray-400">
                         {currentIndex + 1} / {previewFiles.length}
                       </span>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-1 md:gap-2">
                         <motion.button
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={prevSlide}
-                          className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors
+                          className="p-1 md:p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors
                                   [box-shadow:0_0_0_1px_#60a5fa40_inset] hover:[box-shadow:0_0_0_1px_#60a5fa_inset]"
                         >
-                          <FaArrowLeft className="text-white" />
+                          <FaArrowLeft className="text-white text-[10px] md:text-sm" />
                         </motion.button>
                         <motion.button
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={nextSlide}
-                          className="p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors
+                          className="p-1 md:p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors
                                   [box-shadow:0_0_0_1px_#60a5fa40_inset] hover:[box-shadow:0_0_0_1px_#60a5fa_inset]"
                         >
-                          <FaArrowRight className="text-white" />
+                          <FaArrowRight className="text-white text-[10px] md:text-sm" />
                         </motion.button>
                       </div>
                     </motion.div>
@@ -385,16 +371,24 @@ const ProjectDetail = () => {
                     className="relative aspect-video rounded-xl overflow-hidden
                               [box-shadow:0_0_0_1px_#60a5fa40_inset] bg-white/5 backdrop-blur-sm"
                   >
-                    <motion.img
-                      key={currentIndex}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                      src={`/previews/${currentProject.preview}/${encodeURIComponent(previewFiles[currentIndex])}`}
-                      alt={`Preview ${currentIndex + 1}`}
-                      className="w-full h-full object-contain"
-                    />
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={currentIndex}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 1.05 }}
+                        transition={{ duration: 0.5 }}
+                        className="absolute w-full h-full"
+                      >
+                        <Image
+                          src={`/previews/${currentProject.preview}/${encodeURIComponent(previewFiles[currentIndex])}`}
+                          alt={`Preview ${currentIndex + 1}`}
+                          fill
+                          className="object-contain"
+                          priority
+                        />
+                      </motion.div>
+                    </AnimatePresence>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                     
                     {/* Preview Info */}
@@ -403,17 +397,17 @@ const ProjectDetail = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: 0.4 }}
-                      className="absolute bottom-0 left-0 right-0 p-6"
+                      className="absolute bottom-0 left-0 right-0 p-2 md:p-6"
                     >
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium text-white">
+                      <div className="flex items-center justify-between mb-0.5 md:mb-2">
+                        <span className="text-[8px] md:text-sm font-medium text-white">
                           Screenshot {currentIndex + 1}
                         </span>
-                        <span className="text-xs text-gray-300">
+                        <span className="text-[6px] md:text-xs text-gray-300">
                           {previewFiles[currentIndex].split(' ').slice(1, 3).join(' ')}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-300 line-clamp-2">
+                      <p className="text-[8px] md:text-sm text-gray-300 line-clamp-2">
                         {previewFiles[currentIndex].replace(/Screenshot \d{8} \d{6}\.png$/, '')}
                       </p>
                     </motion.div>
@@ -425,8 +419,8 @@ const ProjectDetail = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.5 }}
-                    className="mt-6 flex gap-4 overflow-x-auto pb-4 
-                              [&::-webkit-scrollbar]:h-1.5 
+                    className="mt-3 md:mt-6 flex gap-1.5 md:gap-4 overflow-x-auto pb-1.5 md:pb-4 
+                              [&::-webkit-scrollbar]:h-1 md:[&::-webkit-scrollbar]:h-1.5
                               [&::-webkit-scrollbar-track]:bg-gray-800/50 
                               [&::-webkit-scrollbar-thumb]:bg-gradient-to-r 
                               [&::-webkit-scrollbar-thumb]:from-blue-400 
@@ -441,7 +435,7 @@ const ProjectDetail = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.3, delay: index * 0.1 }}
                         onClick={() => setCurrentIndex(index)}
-                        className={`relative flex-shrink-0 w-24 aspect-video rounded-lg overflow-hidden
+                        className={`relative flex-shrink-0 w-12 md:w-24 aspect-video rounded-lg overflow-hidden
                                   transition-all duration-300 ${
                                     index === currentIndex
                                       ? '[box-shadow:0_0_0_2px_#60a5fa_inset] scale-105'

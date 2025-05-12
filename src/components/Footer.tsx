@@ -30,10 +30,10 @@ export default function Footer() {
             <div className="mb-6">
               {/* Text Layer */}
               <div>
-                <h3 className="text-3xl font-bold tracking-tight text-white mb-2">
+                <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white mb-2">
                   {hero.title.name}
                 </h3>
-                <p className="text-2xl font-medium text-blue-400 tracking-wide">
+                <p className="text-xl md:text-2xl font-medium text-blue-400 tracking-wide">
                   {hero.title.highlight}
                 </p>
               </div>
@@ -131,25 +131,8 @@ export default function Footer() {
           <p className="text-gray-400 text-sm tracking-wide">
             © {currentYear} {hero.title.name}. All rights reserved.
           </p>
-          <p className="mt-3 text-gray-500 text-sm tracking-wide">
-            Made using{' '}
-            <a
-              href="https://nextjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 transition-colors font-medium"
-            >
-              Next.js
-            </a>
-            {' '}and{' '}
-            <a
-              href="https://tailwindcss.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 transition-colors font-medium"
-            >
-              Tailwind CSS
-            </a>
+          <p className="mt-3 italic text-gray-500 text-sm tracking-wide">
+          &quot;Just start, you&rsquo;ll get used to it.&quot;
           </p>
         </motion.div>
       </div>

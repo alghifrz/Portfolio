@@ -25,9 +25,9 @@ const Profile = () => {
   }, [nextPhoto]);
 
   return (
-    <section id="profile" className="relative py-5 z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-start items-center gap-0 md:gap-20 md:py-32">
+    <section id="profile" className="relative py-4 md:py-24 z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-start items-center gap-0 md:gap-16 md:py-28">
       {/* Decorative blurred circles */}
-      <div className="relative py-5 z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-start items-center gap-0 md:gap-20">
+      <div className="relative py-4 z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-start items-center gap-0 md:gap-16">
         {/* Foto Slider */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
@@ -36,17 +36,17 @@ const Profile = () => {
           transition={{ duration: 0.7 }}
           className="order-2 md:order-1 w-full md:w-1/2 flex flex-col items-center"
         >
-          <div className="flex gap-3 md:gap-5 items-center justify-center w-full">
+          <div className="flex gap-2 md:gap-4 items-center justify-center w-full">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={prevPhoto}
-              className="flex bg-blue-400/30 hover:bg-gradient-to-r from-blue-400 to-purple-600 text-xl md:text-2xl rounded-full p-1.5 md:p-2 transition-all"
+              className="flex bg-blue-400/30 hover:bg-gradient-to-r from-blue-400 to-purple-600 text-lg md:text-xl rounded-full p-1 md:p-1.5 transition-all"
             >
               &lt;
             </motion.button>
 
-            <div className="relative w-[200px] h-[150px] md:w-[600px] md:h-[400px] flex flex-col items-center justify-center mt-4 md:mt-0">
+            <div className="relative w-[300px] h-[190px] md:w-[500px] md:h-[350px] flex flex-col items-center justify-center mt-8 md:mt-0">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current}
@@ -60,8 +60,8 @@ const Profile = () => {
                     src={photos[current]}
                     alt={`Photo ${current + 1}`}
                     fill
-                    className="shadow-2xl object-cover rounded-xl md:rounded-2xl transition-all duration-300"
-                    sizes="(max-width: 768px) 200px, (max-width: 1200px) 600px, 33vw"
+                    className="shadow-xl object-cover rounded-lg md:rounded-xl transition-all duration-300"
+                    sizes="(max-width: 768px) 280px, (max-width: 1200px) 500px, 33vw"
                     priority
                   />
                 </motion.div>
@@ -72,7 +72,7 @@ const Profile = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={nextPhoto}
-              className="flex bg-blue-400/30 hover:bg-gradient-to-r from-blue-400 to-purple-600 text-xl md:text-2xl rounded-full p-1.5 md:p-2 transition-all"
+              className="flex bg-blue-400/30 hover:bg-gradient-to-r from-blue-400 to-purple-600 text-lg md:text-xl rounded-full p-1 md:p-1.5 transition-all"
             >
               &gt;
             </motion.button>
@@ -84,14 +84,14 @@ const Profile = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="order-1 md:order-2 w-full md:w-1/2 text-center md:text-left md:items-start mt-4 md:mt-0 px-4 md:px-0"
+          className="order-1 md:order-2 w-full md:w-1/2 text-center md:text-left md:items-start mt-3 md:mt-0 px-3 md:px-0"
         >
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-2xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold mb-3 md:mb-4 pb-3 md:pb-5 border-b border-white"
+            className="text-xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold mb-2 md:mb-3 pb-2 md:pb-4 border-b border-white"
           >
             {content.about.about}
           </motion.h2>
@@ -100,7 +100,7 @@ const Profile = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-sm md:text-xl leading-relaxed"
+            className="text-xs md:text-base leading-relaxed"
           >
             {content.about.detail}
           </motion.p>
@@ -116,7 +116,7 @@ const Profile = () => {
         className="absolute bottom-0 left-0 w-full overflow-hidden leading-none"
       >
         <svg
-          className="relative block w-full h-[50px] md:h-[100px]"
+          className="relative block w-full h-[40px] md:h-[80px]"
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1200 120"
@@ -130,7 +130,7 @@ const Profile = () => {
       </motion.div>
 
       {/* Floating particles */}
-      <div className="absolute bottom-0 left-0 w-full h-[50px] md:h-[100px] overflow-hidden">
+      <div className="absolute bottom-0 left-0 w-full h-[40px] md:h-[80px] overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
@@ -143,7 +143,7 @@ const Profile = () => {
               repeat: Infinity,
               repeatType: "reverse"
             }}
-            className="absolute w-1.5 md:w-2 h-1.5 md:h-2 bg-blue-400/30 rounded-full"
+            className="absolute w-1 md:w-1.5 h-1 md:h-1.5 bg-blue-400/30 rounded-full"
             style={{
               left: `${Math.random() * 100}%`,
               bottom: `${Math.random() * 100}%`,

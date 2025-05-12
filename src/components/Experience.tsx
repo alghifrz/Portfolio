@@ -23,33 +23,33 @@ export default function Roadmap() {
   }, []);
 
   // SVG dimensions
-  const svgWidth = isMobile ? 320 : 1200;
-  const svgHeight = isMobile ? 500 : 700;
+  const svgWidth = isMobile ? 360 : 800;
+  const svgHeight = isMobile ? 600 : 500;
   const margin = isMobile 
-    ? { x: 20, y: 40 } 
-    : { x: 0, y: 200 };
+    ? { x: 20, y: 60 } 
+    : { x: 0, y: 120 };
 
   const pathPoints = React.useMemo(() => {
     if (isMobile) {
       // Vertical layout for mobile
-      const verticalSpacing = 80;
-      
-      return steps.map((_, index) => ({
+      const verticalSpacing = 100;
+      const points = steps.map((_, index) => ({
         x: svgWidth / 2,
-        y: margin.y + index * verticalSpacing
+        y: margin.y + index * verticalSpacing // Return to original order for mobile
       }));
+      return points;
     } else {
       // Original layout for desktop
       const horizontalSpacing = (svgWidth - 2 * margin.x) / 2;
-      const verticalSpacing = 280;
+      const verticalSpacing = 200;
       
       return [
-        { x: margin.x, y: margin.y },
-        { x: margin.x + horizontalSpacing, y: margin.y },
-        { x: margin.x + 2 * horizontalSpacing, y: margin.y },
-        { x: margin.x + 2 * horizontalSpacing, y: margin.y + verticalSpacing },
-        { x: margin.x + horizontalSpacing, y: margin.y + verticalSpacing },
-        { x: margin.x, y: margin.y + verticalSpacing },
+        { x: svgWidth - margin.x, y: margin.y },
+        { x: svgWidth - margin.x - horizontalSpacing, y: margin.y },
+        { x: svgWidth - margin.x - 2 * horizontalSpacing, y: margin.y },
+        { x: svgWidth - margin.x - 2 * horizontalSpacing, y: margin.y + verticalSpacing },
+        { x: svgWidth - margin.x - horizontalSpacing, y: margin.y + verticalSpacing },
+        { x: svgWidth - margin.x, y: margin.y + verticalSpacing },
       ];
     }
   }, [isMobile, svgWidth, margin.x, margin.y]);
@@ -68,14 +68,14 @@ export default function Roadmap() {
   }, [pathPoints]);
 
   const handleNext = () => {
-    if (progress < steps.length - 1) {
-      setProgress(p => p + 1);
+    if (progress > 0) {
+      setProgress(p => p - 1);
     }
   };
 
   const handleBack = () => {
-    if (progress > 0) {
-      setProgress(p => p - 1);
+    if (progress < steps.length - 1) {
+      setProgress(p => p + 1);
     }
   };
 
@@ -85,20 +85,20 @@ export default function Roadmap() {
   const circleGradientId = "circleGradient";
 
   return (
-    <section id="experience" className="px-2 md:px-8 mt-24 md:mt-48 md:pt-24">
+    <section id="experience" className="px-2 md:px-4 mt-24 pt-12">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className='mb-4 md:mb-20'
+        className='mb-8 md:mb-12'
       >
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-5xl font-bold mb-2 md:mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600"
+          className="text-2xl md:text-4xl font-bold mb-2 md:mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600"
         >
           {content.experience.title}
         </motion.h1>
@@ -107,7 +107,7 @@ export default function Roadmap() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-white mb-4 md:mb-6 text-center text-xs md:text-2xl"
+          className="text-white mb-4 md:mb-6 text-center text-xs md:text-lg"
         >
           {content.experience.subtitle}
         </motion.p>
@@ -237,27 +237,29 @@ export default function Roadmap() {
           {pathPoints.map((pt, i) => {
             const isActive = progress >= i;
             const isCurrent = progress === i;
-            const nodeSize = isMobile ? 16 : 48;
-            const fontSize = isMobile ? 10 : 40;
-            const labelFontSize = isMobile ? 8 : 24;
-            const dateFontSize = isMobile ? 7 : 20;
-            const companyFontSize = isMobile ? 7 : 20;
+            const nodeSize = isMobile ? 16 : 32;
+            const fontSize = isMobile ? 12 : 28;
+            const labelFontSize = isMobile ? 9 : 16;
+            const dateFontSize = isMobile ? 8 : 14;
+            const companyFontSize = isMobile ? 8 : 14;
 
             const isEven = i % 2 === 0;
-            const textOffset = isMobile ? (isEven ? 30 : -30) : 0;
+            const textOffset = isMobile 
+              ? (isEven ? 32 : -32)
+              : (isEven ? -24 : 24);
             const textX = isMobile ? pt.x + textOffset : pt.x;
             
             const dateY = isMobile 
               ? pt.y - 16
-              : pt.y + (i < 3 ? -145 : 90);
+              : pt.y + (i < 3 ? -100 : 60);
             
             const textY = isMobile 
               ? pt.y - 2
-              : pt.y + (i < 3 ? -110 : 125);
+              : pt.y + (i < 3 ? -75 : 85);
             
             const companyY = isMobile 
               ? pt.y + 20
-              : pt.y + (i < 3 ? -80 : 155);
+              : pt.y + (i < 3 ? -55 : 105);
             
             const textAnchorMobile = isMobile
               ? (isEven ? 'start' : 'end')
@@ -374,7 +376,7 @@ export default function Roadmap() {
                   }}
                   className="transition-all duration-300"
                 >
-                  {i + 1}
+                  {steps.length - i}
                 </motion.text>
                 <text
                   x={textX}
@@ -395,11 +397,9 @@ export default function Roadmap() {
                   fontWeight="bold"
                 >
                   {isMobile ? (
-                    // Mobile: Break text into maximum 2 lines
                     steps[i].title.split(' ').reduce((acc, word, idx) => {
                       if (idx === 0) return word;
                       const lines = acc.split('\n');
-                      // If already 2 lines, just append to second line
                       if (lines.length === 2) {
                         return lines[0] + '\n' + lines[1] + ' ' + word;
                       }
@@ -413,7 +413,7 @@ export default function Roadmap() {
                       <tspan
                         key={lineIdx}
                         x={textX}
-                        dy={lineIdx === 0 ? 0 : 15}
+                        dy={lineIdx === 0 ? 0 : 11}
                         textAnchor={textAnchorMobile}
                       >
                         {line}
@@ -451,7 +451,7 @@ export default function Roadmap() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleBack}
-            disabled={progress === 0}
+            disabled={progress === steps.length-1}
             className="z-10 cursor-pointer flex items-center gap-2 md:gap-3 bg-white/10 backdrop-blur-xl hover:bg-white/20 text-white font-medium px-4 md:px-4 py-2 md:py-2 text-sm md:text-lg rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 border border-blue-400 shadow-[0px_0px_8px_1px_rgba(59,130,246,0.3)]"
           >
             <span className={isMobile ? 'text-md' : 'text-xl'}>{'<'}</span> Prev
@@ -460,19 +460,19 @@ export default function Roadmap() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleNext}
-            disabled={progress === steps.length-1}
+            disabled={progress === 0}
             className="z-10 cursor-pointer flex items-center gap-2 md:gap-3 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 hover:from-blue-600 hover:via-indigo-600 hover:to-purple-600 text-white font-medium px-4 md:px-4 py-2 md:py-2 text-sm md:text-lg rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 shadow-[0px_0px_8px_1px_rgba(59,130,246,0.3)]"
           >
             Next <span className={isMobile ? 'text-md' : 'text-xl'}>{'>'}</span>
           </motion.button>
         </div>
-        <div className='flex flex-col md:flex-row justify-between gap-1 md:gap-8 z-10'>
+        <div className='flex flex-col md:flex-row justify-between gap-1 md:gap-4 z-10'>
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-2 md:mt-4 p-2 md:p-6 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-400 [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40] hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60] transition-all duration-300 text-center w-full md:w-5xl md:h-115 text-base md:text-lg"
+            className="mt-2 md:mt-4 p-2 md:p-4 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-400 [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40] hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60] transition-all duration-300 text-center w-full md:w-3xl md:h-96 text-base md:text-lg"
           >
             <div className='flex justify-between'>
               <div className='align-text-top justify-items-start'>
@@ -481,7 +481,7 @@ export default function Roadmap() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4 }}
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold justify-items-start justify-start text-[8px] md:text-xl"
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-bold justify-items-start justify-start text-[9px] md:text-xl"
                 >
                   {steps[progress].title}
                 </motion.p>
@@ -490,7 +490,7 @@ export default function Roadmap() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.1 }}
-                  className="text-white text-[8px] md:text-base italic justify-items-start"
+                  className="text-white text-[8px] md:text-sm italic justify-items-start"
                 >
                   {steps[progress].company}
                 </motion.p>
@@ -500,7 +500,7 @@ export default function Roadmap() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.2 }}
-                className="justify-items-end align-text-top text-blue-400 md:text-xl text-[8px] font-bold"
+                className="justify-items-end align-text-top text-blue-400 md:text-base text-[8px] font-bold"
               >
                 {steps[progress].date}
               </motion.p>
@@ -522,7 +522,7 @@ export default function Roadmap() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="list-disc pl-5 text-[7px] md:text-lg"
+                  className="list-disc pl-5 text-[8px] md:text-base"
                 >
                   {steps[progress].description.map((desc, index) => (
                     <motion.li 
@@ -532,7 +532,7 @@ export default function Roadmap() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
                     >
-                      <p className="text-white text-[7px] md:text-lg justify-items-start text-left">
+                      <p className="text-white text-[8px] md:text-base justify-items-start text-left">
                         {desc}
                       </p>
                     </motion.li>
@@ -546,14 +546,14 @@ export default function Roadmap() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="md:w-sm mt-2 md:mt-4 p-4 md:p-6 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-400 [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40] hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60] transition-all duration-300 text-center w-full max-w-lg text-base md:text-lg flex flex-col"
+            className="md:w-sm mt-2 md:mt-4 p-4 bg-white/10 backdrop-blur-xl rounded-xl border border-blue-400 [box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_2px_#60a5fa40] hover:[box-shadow:0_0_0_1px_#60a5fa_inset,0_0_30px_4px_#60a5fa60] transition-all duration-300 text-center w-full max-w-lg text-base md:text-lg flex flex-col"
           >
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-extrabold text-xs md:text-2xl mb-2"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 font-extrabold text-xs md:text-xl mb-2"
             >
               {content.experience.key}
             </motion.p>
@@ -573,7 +573,7 @@ export default function Roadmap() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
-                    <p className="text-blue-200 text-[8px] md:text-sm bg-blue-400/20 px-2 py-0.5 md:px-3 md:py-1 rounded-full border border-blue-400 inline-block hover:bg-blue-400/30 transition-all duration-300">
+                    <p className="text-blue-200 text-[8px] md:text-xs bg-blue-400/20 px-2 py-0.5 md:px-3 md:py-1 rounded-full border border-blue-400 inline-block hover:bg-blue-400/30 transition-all duration-300">
                       {desc}
                     </p>
                   </motion.li>
