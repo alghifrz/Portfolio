@@ -23,10 +23,10 @@ export default function Roadmap() {
   }, []);
 
   // SVG dimensions
-  const svgWidth = isMobile ? 360 : 800;
+  const svgWidth = isMobile ? 350 : 800;
   const svgHeight = isMobile ? 600 : 500;
   const margin = isMobile 
-    ? { x: 20, y: 60 } 
+    ? { x: 30, y: 60 } 
     : { x: 0, y: 120 };
 
   const pathPoints = React.useMemo(() => {
@@ -34,8 +34,8 @@ export default function Roadmap() {
       // Vertical layout for mobile
       const verticalSpacing = 100;
       const points = steps.map((_, index) => ({
-        x: svgWidth / 2,
-        y: margin.y + index * verticalSpacing // Return to original order for mobile
+        x: svgWidth / 2, // Center point for mobile
+        y: margin.y + index * verticalSpacing
       }));
       return points;
     } else {
@@ -118,7 +118,7 @@ export default function Roadmap() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative mb-12 pb-0 md:mb-2 overflow-x-hidden"
+        className="relative mb-12 pb-0 md:mb-2 overflow-x-hidden flex justify-center items-center w-full"
       >
         <svg width={svgWidth} height={svgHeight} className="mx-auto" style={{ overflow: 'visible' }}>
           <defs>

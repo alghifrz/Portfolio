@@ -27,7 +27,7 @@ const Profile = () => {
   return (
     <section id="profile" className="relative py-4 md:py-24 z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-start items-center gap-0 md:gap-16 md:py-28">
       {/* Decorative blurred circles */}
-      <div className="relative py-4 z-10 max-w-7xl mx-auto flex flex-col md:flex-row md:items-start items-center gap-0 md:gap-16">
+      <div className="relative py-4 z-10 max-w-7xl md:mx-auto flex flex-col md:flex-row md:items-start items-center gap-0 md:gap-16">
         {/* Foto Slider */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
