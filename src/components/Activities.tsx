@@ -275,7 +275,7 @@ export default function Activities() {
                               items-center bg-gradient-to-br from-gray-800/50 to-gray-900/50
                               rounded-lg ${
                                 isGridView 
-                                ? 'flex-col justify-center p-1 md:w-[62px] md:h-[70px] w-[67px] h-[60px] hover:scale-105 hover:translate-y-[-5px]' 
+                                ? 'flex-col justify-center p-1 md:w-[62px] md:h-[70px] w-[55px] h-[60px] hover:scale-105 hover:translate-y-[-5px]' 
                                 : 'flex-row p-2 h-[35px] hover:translate-x-2'
                               }`}
                     style={{
