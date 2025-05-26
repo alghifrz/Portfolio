@@ -41,11 +41,11 @@
     "buttons": {
       "cv": {
         "text": "See More CV",
-        "link": "https://drive.google.com/file/d/12REbKz_fyvAzB382RXDiYv1Hji6QjjbF/view?usp=sharing"
+        "link": "https://drive.google.com/file/d/1LpTuaJO6EQmKYMoECHug8cKYFAGWlbeo/view?usp=sharing"
       },
       "portfolio": {
         "text": "See More Portfolio",
-        "link": "https://drive.google.com/file/d/1KMffJP-W_wnRXCxKaeMK8lXF37WE8_1W/view?usp=sharing"
+        "link": "https://drive.google.com/file/d/15EIvQLAPNE0bDZDvihQ9cPxoHoVDjniT/view?usp=sharing"
       }
     },
     "socialMedia": [
@@ -302,7 +302,7 @@
     "featured": [
       {
         "title": "CompSci QuizApp",
-        "description": "A quiz application that allows users to test their knowledge of computer science topics.",
+        "description": "A fullstack web-based quiz platform designed to help users test and improve their knowledge of computer science topics. It features a clean, responsive interface and supports interactive, multiple-choice quizzes.",
         "image": "compsci.png",
         "technologies": ["TypeScript", "JavaScript", "Next.js", "React.js", "TailwindCSS", "PostgreSQL", "Prisma ORM", "Google OAuth", "Vercel"],
         "github": "https://github.com/alghifrz/CompSci-QuizApp",
