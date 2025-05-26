@@ -301,6 +301,17 @@
     "subtitle": "A showcase of my best work and technical expertise",
     "featured": [
       {
+        "title": "CompSci QuizApp",
+        "description": "A quiz application that allows users to test their knowledge of computer science topics.",
+        "image": "compsci.png",
+        "technologies": ["TypeScript", "JavaScript", "Next.js", "React.js", "TailwindCSS", "PostgreSQL", "Prisma ORM", "Google OAuth", "Vercel"],
+        "github": "https://github.com/alghifrz/CompSci-QuizApp",
+        "demo": "https://comp-sci-quiz-app.vercel.app/",
+        "cat": "Web Development",
+        "featured": true,
+        "preview": "CompSci"
+      },
+      {
         "title": "Alghif Rz | Portfolio",
         "description": "A professional portfolio website",
         "image": "portfolio.png",
@@ -312,17 +323,6 @@
         "preview": "Portfolio"
       },
       {
-        "title": "DigitalExposome - Mental Wellbeing Classification",
-        "description": "Predicting a person's mental wellbeing level based on air quality data and their physiological signal collected from wearable devices.",
-        "image": "menta.png",
-        "technologies": ["Jupyter Notebook", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn"],
-        "github": "https://github.com/alghifrz/DigitalExposome-Classification",
-        "demo": "",
-        "cat": "Machine Learning",
-        "featured": true,
-        "preview": "Digital"
-      },
-      {
         "title": "UPartner Web",
         "description": "A full-stack website that connects lecturers and students for project collaboration, handling the entire development process from requirements gathering and system design to implementation and testing.",
         "image": "upartner.png",
@@ -332,6 +332,17 @@
         "cat": "Web Development",
         "featured": true,
         "preview": "UPartner"
+      },
+      {
+        "title": "DigitalExposome - Mental Wellbeing Classification",
+        "description": "Predicting a person's mental wellbeing level based on air quality data and their physiological signal collected from wearable devices.",
+        "image": "menta.png",
+        "technologies": ["Jupyter Notebook", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Seaborn"],
+        "github": "https://github.com/alghifrz/DigitalExposome-Classification",
+        "demo": "",
+        "cat": "Machine Learning",
+        "featured": true,
+        "preview": "Digital"
       },
       {
         "title": "Productivity Mobile App",
