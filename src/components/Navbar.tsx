@@ -4,6 +4,7 @@ import { FiMenu, FiX } from 'react-icons/fi'
 import { useRouter } from 'next/router'
 import content from '@/data/content.json'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
 interface NavItem {
     name: string;
@@ -418,12 +419,20 @@ const Navbar = () =>  {
   
     return (
         <>
-            <nav className="bg-black/50 text-white shadow-md fixed w-full z-50 backdrop-blur-xl">
+            <nav className="bg-black/50 text-white shadow-md fixed w-full z-50 backdrop-blur-xl py-2">
                 <div className="max-w-7xl mx-auto px-4 md:px-6 py-1 md:py-1 flex justify-between items-center">
                     <div className="text-md md:text-xl font-bold">
                         <Link href="/">
-                            {navbar.logo.text}
-                            <span className="text-blue-400">{navbar.logo.highlight}</span>
+                            <div className='flex items-center gap-2'>
+                                <Image 
+                                    src={activeSection === 'home' || activeSection === 'contact' ? "/logo.png" : "/logoW.png"} 
+                                    alt="logo" 
+                                    width={40} 
+                                    height={40} 
+                                />
+                                {navbar.logo.text}
+                                <span className="text-blue-400">{navbar.logo.highlight}</span>        
+                            </div>
                         </Link>
                     </div>
 
